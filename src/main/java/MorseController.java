@@ -19,13 +19,11 @@ public class MorseController {
 
     @FXML
     void dotEvent(ActionEvent event) {
-        System.out.println("Dot");
         morseText.setText(morseText.getText() + ".");
     }
 
     @FXML
     void dashEvent(ActionEvent event) {
-        System.out.println("Dash");
         morseText.setText(morseText.getText() + "-");
     }
 
