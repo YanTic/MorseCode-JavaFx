@@ -1,4 +1,30 @@
-#playButton{
-    -fx-text-fill:Red;
+/*          Panel         */
+#mainPanel{
     
 }
+
+/*          Labels        */
+#morseLabel{
+    -fx-text-fill: blue;
+    -fx-font: 105px "Calibri";
+
+}
+
+/*          Buttons         */
+#playButton{
+    -fx-graphic: url("../images/playButton.png");
+    -fx-background-color: transparent;
+    
+}
+
+#flagButton{
+
+} 
+
+#settingsButton{
+
+} 
+
+#coffeeButton{
+
+} 
