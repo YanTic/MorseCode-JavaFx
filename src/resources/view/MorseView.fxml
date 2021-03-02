@@ -4,10 +4,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles/MorseView.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MorseController">
+<AnchorPane fx:id="morsePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MorseController">
    <children>
-      <Button fx:id="dotButton" layoutX="181.0" layoutY="283.0" mnemonicParsing="false" onAction="#dotEvent" stylesheets="@../styles/MorseView.css" text="." />
-      <Button fx:id="dashButton" layoutX="367.0" layoutY="283.0" mnemonicParsing="false" onAction="#dashEvent" stylesheets="@../styles/MorseView.css" text="_" />
-      <TextField fx:id="morseText" layoutX="224.0" layoutY="167.0" stylesheets="@../styles/MorseView.css" />
+      <Button fx:id="dotButton" layoutX="261.0" layoutY="412.0" mnemonicParsing="false" onAction="#dotEvent" prefHeight="47.0" prefWidth="97.0" stylesheets="@../styles/MorseView.css" text="." />
+      <Button fx:id="dashButton" layoutX="468.0" layoutY="414.0" mnemonicParsing="false" onAction="#dashEvent" prefHeight="47.0" prefWidth="97.0" stylesheets="@../styles/MorseView.css" text="_" />
+      <TextField fx:id="morseText" layoutX="248.0" layoutY="159.0" prefHeight="129.0" prefWidth="349.0" stylesheets="@../styles/MorseView.css" />
+      <Button fx:id="returnButton" layoutX="44.0" layoutY="519.0" mnemonicParsing="false" onAction="#returnBttEvent" stylesheets="@../styles/MorseView.css" text="Return" />
    </children>
 </AnchorPane>
