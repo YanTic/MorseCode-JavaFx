@@ -1,11 +1,34 @@
-#dotButton{
+#morsePanel{
+    -fx-background-color: rgb(103, 192, 61);
+}
 
+#dotButton{
+    -fx-font-weight: BOLD;
 }
 
 #dashButton{
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
 
+#runButton{
+    
+}
+
+#checkButton{
+    
 }
 
 #morseText{
-    
+    -fx-font-size: 80px;
+}
+
+#wordLabel{
+    -fx-background-color: rgb(72, 136, 42);
+    -fx-font-size: 50px;
+}
+
+#letterLabel{
+    -fx-background-color: rgb(72, 136, 42);
+    -fx-font-size: 30px;
 }
