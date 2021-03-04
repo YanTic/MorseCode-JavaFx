@@ -3,6 +3,7 @@ package main.java.morseCode;
 import java.lang.reflect.Field;
 
 public class MorseLanguage {
+    int counterLetters = 0;
     String  a = ".-",
             b = "-...",
             c = "-.-.",
@@ -41,8 +42,8 @@ public class MorseLanguage {
             //Equals compare the names. Example: letter is " a" and f[i].getName is " a" (With spaces);
                 if(fields[i].getName().equals(letter)){
                     morse = (String) object;
-                    System.out.println(object); 
-                    System.out.println("WORKS");
+//                    System.out.println(object); 
+//                    System.out.println("WORKS");
                     break;
                 }
             }
@@ -51,5 +52,13 @@ public class MorseLanguage {
         }
         
         return morse;
+    }
+
+    public int getCounterLetters(){
+        return counterLetters;
+    }
+
+    public void setCounterLetters(int counterLetters){
+        this.counterLetters = counterLetters;
     }
 }
