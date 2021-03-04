@@ -1,11 +1,11 @@
 /*          Panel         */
 #mainPanel{
-    
+    -fx-background-color: rgb(75, 73, 73);
 }
 
 /*          Labels        */
 #morseLabel{
-    -fx-text-fill: blue;
+    -fx-text-fill: rgb(59, 141, 179);
     -fx-font: 105px "Calibri";
 
 }
