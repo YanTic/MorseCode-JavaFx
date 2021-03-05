@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="morsePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MorseController">
+<AnchorPane fx:id="morsePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleOnKeyPressed" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MorseController">
    <children>
       <Button fx:id="dotButton" layoutX="267.0" layoutY="427.0" mnemonicParsing="false" onAction="#dotEvent" prefHeight="47.0" prefWidth="97.0" stylesheets="@../styles/MorseView.css" text="." />
       <Button fx:id="dashButton" layoutX="456.0" layoutY="429.0" mnemonicParsing="false" onAction="#dashEvent" prefHeight="47.0" prefWidth="97.0" stylesheets="@../styles/MorseView.css" text="_" />
