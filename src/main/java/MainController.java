@@ -14,13 +14,32 @@ public class MainController {
     @FXML private Button flagButton;
     @FXML private Button settingsButton;
     @FXML private Button coffeeButton;
+    @FXML private Button dontPush;
     @FXML private Label morseLabel;
+    MorseController keys = new MorseController();
 
     @FXML
     void playBttEvent(ActionEvent e) throws Exception{
         //This change the scene to morse scene
         Parent root = FXMLLoader.load(getClass().getResource("/resources/view/MorseView.fxml"));
         Stage morseView = (Stage) playButton.getScene().getWindow();
-        morseView.setScene(new Scene(root, 800, 600));
+        Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
+/*  lambda      scene.setOnKeyPressed(event ->{
+            System.out.println("Key pressed: "+event.getText());
+            if(event.getText().equals(".")){
+                System.out.println("WORKS");
+            }
+            if(event.getText().equals("-")){
+                System.out.println("WORKS");
+                keys.dashEvent(e);
+            }
+        });     This worked, but actually not. In the TextField doesn't write anything*/
+        morseView.setScene(scene);
+    }
+
+    @FXML
+    void dontPushBttEvent(ActionEvent e){
+        PlaySound.playSounds("src/resources/sounds/DontPush.wav");
     }
 }
