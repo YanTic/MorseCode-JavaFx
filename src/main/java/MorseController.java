@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class MorseController {
@@ -18,20 +19,22 @@ public class MorseController {
     @FXML private Button dashButton;
     @FXML private Button dotButton;
     @FXML private Button RunButton;
-    @FXML private TextField morseText;
+    @FXML private Button checkButton;
+    @FXML private TextField morseText = new TextField();
     @FXML private Label wordLabel = new Label();
     @FXML private Label letterLabel = new Label();
+    MorseLanguage morseLanguage = new MorseLanguage();
     Words word = new Words();
     String textLabel, letter, letterToMorse;
 
     @FXML
-    void dotEvent(ActionEvent event) {
+	void dotEvent() {
         morseText.setText(morseText.getText() + ".");
         PlaySound.playSounds("src/resources/sounds/dot.wav");
     }
 
     @FXML
-    void dashEvent(ActionEvent event) {
+    void dashEvent() {
         morseText.setText(morseText.getText() + "-");
         PlaySound.playSounds("src/resources/sounds/dash.wav");
     }
@@ -48,19 +51,60 @@ public class MorseController {
 
     @FXML
     void RunBttEvent(ActionEvent event) {
+        morseLanguage.setCounterLetters(0);
+        morseText.clear();
         textLabel = word.words[(int)(Math.random()*336)];
-        System.out.println("Word: "+textLabel);
-        System.out.println("letters: "+textLabel.length());
-            for(int i=0; i<textLabel.length(); i++){
-                System.out.print(" "+textLabel.charAt(i));
-            }
-        System.out.print("\n");
-        letter = ""+textLabel.charAt(0);
         wordLabel.setText(textLabel);
-        letterLabel.setText(letter);
+        System.out.println("\n|------Word: "+textLabel+" ------|");
+        System.out.println("|------letters: "+textLabel.length()+" ------|");
+        System.out.print("|------");
+            for(int i=0; i<textLabel.length(); i++){
+                System.out.print("  "+textLabel.charAt(i));
+            }
+        System.out.print(" ------| \n\n");
 
-        MorseLanguage p1 = new MorseLanguage();
-            System.out.println(""+letter+" to morse is: "+p1.translate(letter)); 
+        letter = ""+textLabel.charAt(0);
+        letterLabel.setText(letter);
+//        System.out.println(""+letter+" to morse is: "+morseLanguage.translate(letter)); 
+        checkBttEvent(event);
+    }
+
+    @FXML
+    void checkBttEvent(ActionEvent event) {
+        String morse;
+        int i = morseLanguage.getCounterLetters();
+
+        letter = ""+textLabel.charAt(i);
+        morse = morseLanguage.translate(letter);
+
+        if(morse.equals(morseText.getText())){
+            try{
+                System.out.println(""+morseText.getText()+" is: "+morse+"  GOOD JOB!");
+                morseLanguage.setCounterLetters(++i);
+                i = morseLanguage.getCounterLetters();
+                morseText.clear();
+                letter = ""+textLabel.charAt(i);
+                letterLabel.setText(letter);
+            }catch(Exception e){
+                //if(morseLanguage.getCounterLetters() > textLabel.length());
+                System.out.println("Correct Word");
+                RunBttEvent(event);
+            }
+        }
+        else{
+            System.out.println(""+morseText.getText()+" is not: "+morse+"  Try again");  
+            morseText.clear();
+        } 
+    }
+
+    @FXML   //This is from AnchorPane (morsePanel I call it);
+    void handleOnKeyPressed(KeyEvent e){
+        if(e.getText().equals(".")){
+            dotEvent();
+        }
+        if(e.getText().equals("-")){
+            dashEvent();
+        }
     }
 
 }
