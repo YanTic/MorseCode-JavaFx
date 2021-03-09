@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
@@ -20,6 +21,8 @@ public class MorseController {
     @FXML private Button dotButton;
     @FXML private Button RunButton;
     @FXML private Button checkButton;
+    @FXML private Button helpButton;
+    @FXML private ScrollPane helpScrollPane = new ScrollPane();
     @FXML private TextField morseText = new TextField();
     @FXML private Label wordLabel = new Label();
     @FXML private Label letterLabel = new Label();
@@ -84,7 +87,7 @@ public class MorseController {
                 i = morseLanguage.getCounterLetters();
                 morseText.clear();
                 letter = ""+textLabel.charAt(i);
-                letterLabel.setText(letter);
+                letterLabel.setText(letter.toUpperCase());
             }catch(Exception e){
                 //if(morseLanguage.getCounterLetters() > textLabel.length());
                 System.out.println("Correct Word");
@@ -95,6 +98,15 @@ public class MorseController {
             System.out.println(""+morseText.getText()+" is not: "+morse+"  Try again");  
             morseText.clear();
         } 
+    }
+
+    
+    @FXML
+    void helpBttEvent(ActionEvent event) throws IOException {
+        if(helpScrollPane.isVisible())
+            helpScrollPane.setVisible(false);
+        else
+            helpScrollPane.setVisible(true);
     }
 
     @FXML   //This is from AnchorPane (morsePanel I call it);
