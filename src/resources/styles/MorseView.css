@@ -1,14 +1,19 @@
 #morsePanel{
-    -fx-background-color: rgb(103, 192, 61);
+    -fx-background-color: #008F7A;
 }
 
 #dotButton{
+    -fx-background-color: #037a68;
+    -fx-text-alignment: center;
+    -fx-font-size: 50px;
     -fx-font-weight: BOLD;
 }
 
 #dashButton{
-    -fx-font-size: 15px;
-    -fx-font-weight: bold;
+    -fx-background-color: #037a68;
+    -fx-text-alignment: center;
+    -fx-font-size: 50px;
+    -fx-font-weight: BOLD;
 }
 
 #runButton{
@@ -21,14 +26,15 @@
 
 #morseText{
     -fx-font-size: 80px;
+    -fx-font-weight: BOLD;
 }
 
 #wordLabel{
-    -fx-background-color: rgb(72, 136, 42);
+    -fx-background-color: transparent;
     -fx-font-size: 50px;
 }
 
 #letterLabel{
-    -fx-background-color: rgb(72, 136, 42);
+    -fx-background-color: transparent;
     -fx-font-size: 30px;
 }

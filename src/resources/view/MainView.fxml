@@ -4,13 +4,13 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MainController">
+<AnchorPane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/Main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MainController">
    <children>
       <Button fx:id="playButton" layoutX="295.0" layoutY="195.0" mnemonicParsing="false" onAction="#playBttEvent" stylesheets="@../styles/Main.css" />
       <Button fx:id="flagButton" layoutX="668.0" layoutY="456.0" mnemonicParsing="false" stylesheets="@../styles/Main.css" text="Button" />
       <Button fx:id="settingsButton" layoutX="668.0" layoutY="515.0" mnemonicParsing="false" stylesheets="@../styles/Main.css" text="Button" />
       <Button fx:id="coffeeButton" layoutX="48.0" layoutY="516.0" mnemonicParsing="false" stylesheets="@../styles/Main.css" text="Button" />
-      <Label fx:id="morseLabel" layoutX="82.0" layoutY="50.0" stylesheets="@../styles/Main.css" text="Morse Desktop" />
+      <Label fx:id="morseLabel" layoutX="66.0" layoutY="46.0" stylesheets="@../styles/Main.css" text="Morse Desktop" />
       <Button fx:id="dontPush" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#dontPushBttEvent" text="Don't push" />
    </children>
 </AnchorPane>
