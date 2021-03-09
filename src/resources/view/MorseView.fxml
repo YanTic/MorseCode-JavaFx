@@ -2,18 +2,35 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane fx:id="morsePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleOnKeyPressed" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MorseController">
    <children>
-      <Button fx:id="dotButton" layoutX="267.0" layoutY="427.0" mnemonicParsing="false" onAction="#dotEvent" prefHeight="47.0" prefWidth="97.0" stylesheets="@../styles/MorseView.css" text="." />
-      <Button fx:id="dashButton" layoutX="456.0" layoutY="429.0" mnemonicParsing="false" onAction="#dashEvent" prefHeight="47.0" prefWidth="97.0" stylesheets="@../styles/MorseView.css" text="_" />
+      <Button fx:id="dotButton" layoutX="185.0" layoutY="430.0" mnemonicParsing="false" onAction="#dotEvent" prefHeight="93.0" prefWidth="192.0" stylesheets="@../styles/MorseView.css" text="." />
+      <Button fx:id="dashButton" layoutX="450.0" layoutY="430.0" mnemonicParsing="false" onAction="#dashEvent" prefHeight="93.0" prefWidth="192.0" stylesheets="@../styles/MorseView.css" text="_" />
       <Button fx:id="checkButton" layoutX="683.0" layoutY="170.0" mnemonicParsing="false" onAction="#checkBttEvent" text="Check" />
       <Button fx:id="returnButton" layoutX="44.0" layoutY="519.0" mnemonicParsing="false" onAction="#returnBttEvent" stylesheets="@../styles/MorseView.css" text="Return" />
       <Button fx:id="RunButton" layoutX="682.0" layoutY="94.0" mnemonicParsing="false" onAction="#RunBttEvent" stylesheets="@../styles/MorseView.css" text="Run" />
-      <Label fx:id="wordLabel" layoutX="340.0" layoutY="40.0" />
-      <Label fx:id="letterLabel" layoutX="388.0" layoutY="163.0" />
+      <Label fx:id="wordLabel" layoutX="340.0" layoutY="40.0" text="Word" />
+      <Label fx:id="letterLabel" layoutX="394.0" layoutY="150.0" text="W" />
       <TextField fx:id="morseText" editable="false" layoutX="233.0" layoutY="240.0" prefHeight="100.0" prefWidth="349.0" stylesheets="@../styles/MorseView.css" />
+      <Button fx:id="helpButton" layoutX="729.0" layoutY="553.0" minWidth="33.0" mnemonicParsing="false" onAction="#helpBttEvent" prefHeight="32.0" prefWidth="33.0" stylesheets="@../styles/MorseView.css" text="?" />
+      <ScrollPane fx:id="helpScrollPane" hbarPolicy="NEVER" layoutX="204.0" layoutY="65.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pannable="true" prefHeight="490.0" prefWidth="400.0" visible="false">
+         <content>
+            <AnchorPane prefHeight="490.0" prefWidth="400.0">
+               <children>
+                  <ImageView fitHeight="2250.0" fitWidth="942.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/MorseHelp.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

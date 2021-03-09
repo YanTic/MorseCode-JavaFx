@@ -1,13 +1,13 @@
 /*          Panel         */
 #mainPanel{
-    -fx-background-color: rgb(75, 73, 73);
+    -fx-background-color: linear-gradient(to top, #9db5d8, #83a4d9, #6994d9, #4d82d8, #2e71d6);
 }
 
 /*          Labels        */
 #morseLabel{
-    -fx-text-fill: rgb(59, 141, 179);
-    -fx-font: 105px "Calibri";
-
+    -fx-text-fill: rgb(51, 53, 136);
+    -fx-font-size: 100px;
+    -fx-font-weight: BOLD;
 }
 
 /*          Buttons         */
