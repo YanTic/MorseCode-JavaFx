@@ -18,6 +18,7 @@ public class Main extends Application{
         scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
         primaryStage.setTitle("Morse Desktop");
         primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
         primaryStage.show();
     }
 }
