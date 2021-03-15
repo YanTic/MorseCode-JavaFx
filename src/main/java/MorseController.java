@@ -67,7 +67,7 @@ public class MorseController {
         System.out.print(" ------| \n\n");
 
         letter = ""+textLabel.charAt(0);
-        letterLabel.setText(letter);
+        letterLabel.setText(letter.toUpperCase());
 //        System.out.println(""+letter+" to morse is: "+morseLanguage.translate(letter)); 
         checkBttEvent(event);
     }
