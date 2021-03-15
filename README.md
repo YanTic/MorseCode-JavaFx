@@ -2,8 +2,8 @@
 This is a desktop app developing with JavaFx (Before i created this proyect but with JavaSwing). I'm learning so i'm based on https://morse.withgoogle.com/learn/. (Just for practice, i don't want to use this proyect to sell it or something)
 
 ##Libraries
-- [JFoeniX](https://github.com/sshahine/JFoenix) | Website : [](http://jfoenix.com/)
-- [JavaFx](https://github.com/openjdk/jfx) | Website: [](https://openjfx.io/)
+- [JFoeniX](https://github.com/sshahine/JFoenix) | Website : [Here](http://jfoenix.com/)
+- [JavaFx](https://github.com/openjdk/jfx) | Website: [Here](https://openjfx.io/)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
