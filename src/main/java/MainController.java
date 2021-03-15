@@ -1,5 +1,11 @@
 package main.java;
 
+import java.io.IOException;
+
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -7,13 +13,18 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class MainController {
+    @FXML private StackPane stackPane;
+    @FXML private AnchorPane mainPane;
     @FXML private Button playButton;
     @FXML private Button flagButton;
     @FXML private Button settingsButton;
-    @FXML private Button coffeeButton;
+    @FXML private Button githubButton;
     @FXML private Button dontPush;
     @FXML private Label morseLabel;    
 
@@ -42,6 +53,29 @@ MorseController keys = new MorseController();
     @FXML
     void dontPushBttEvent(ActionEvent e){
         PlaySound.playSounds("src/resources/sounds/DontPush.wav");
+    }
+
+    @FXML
+    void SettingsAction(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/SettingsView.fxml"));
+//        Stage settingsView = (Stage) playButton.getScene().getWindow();
+//        Scene scene = new Scene(root);
+//        scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
+//        settingsView.setScene(scene);
+        Scene scene = settingsButton.getScene();
+        root.translateYProperty().set(scene.getHeight());
+        stackPane.getChildren().add(root);
+
+        Timeline timeLine = new Timeline();
+    //Key Value for the fxml load from south to north, with Interpolator.EASE_IN this means slow-->fast
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+    //Key Frame is the time that the KeyValue takes time to move        
+        KeyFrame kf = new KeyFrame(Duration.seconds(1.3), kv);
+        timeLine.getKeyFrames().add(kf);
+        timeLine.setOnFinished(eventS->{
+            stackPane.getChildren().remove(mainPane);
+        });
+        timeLine.play();
     }
 
 }

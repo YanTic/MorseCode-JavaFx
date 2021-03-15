@@ -16,12 +16,22 @@
     -fx-font-weight: BOLD;
 }
 
+#returnButton{
+    -fx-graphic: url("../images/ReturnButton.png");
+    -fx-background-color: transparent;
+}
+
 #runButton{
     
 }
 
 #checkButton{
     
+}
+
+#helpButton{
+    -fx-graphic: url("../images/HelpButton.png");
+    -fx-background-color: transparent;
 }
 
 #morseText{

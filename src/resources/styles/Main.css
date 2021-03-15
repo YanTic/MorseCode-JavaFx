@@ -1,5 +1,5 @@
 /*          Panel         */
-#mainPanel{
+#mainPane{
     -fx-background-color: linear-gradient(to top, #9db5d8, #83a4d9, #6994d9, #4d82d8, #2e71d6);
 }
 
@@ -18,13 +18,18 @@
 }
 
 #flagButton{
-
+    -fx-graphic: url("../images/FlagIcon.png");
+    -fx-background-color: transparent;
+    -fx-opacity: 90%;
 } 
 
 #settingsButton{
-
+    -fx-graphic: url("../images/SettingsIcon.png");
+    -fx-background-color: transparent;
+    -fx-opacity: 90%;
 } 
 
-#coffeeButton{
-
+#githubButton{
+    -fx-graphic: url("../images/GithubIcon.png");
+    -fx-background-color: transparent;
 } 
