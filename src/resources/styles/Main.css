@@ -12,24 +12,25 @@
 
 /*          Buttons         */
 #playButton{
-    -fx-graphic: url("../images/playButton.png");
+    -fx-background-image: url("../images/playButton.png");
     -fx-background-color: transparent;
     
 }
 
 #flagButton{
-    -fx-graphic: url("../images/FlagIcon.png");
+    -fx-background-image: url("../images/FlagIcon.png");
     -fx-background-color: transparent;
     -fx-opacity: 90%;
 } 
 
 #settingsButton{
-    -fx-graphic: url("../images/SettingsIcon.png");
+    -fx-background-image: url("../images/SettingsIcon.png");
     -fx-background-color: transparent;
     -fx-opacity: 90%;
 } 
 
 #githubButton{
-    -fx-graphic: url("../images/GithubIcon.png");
+    /*    -fx-graphic: url("../images/GithubIcon.png");*/
+    -fx-background-image: url("../images/GithubIcon.png");
     -fx-background-color: transparent;
 } 

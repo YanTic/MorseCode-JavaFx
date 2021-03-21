@@ -3,17 +3,19 @@
 }
 
 #dotButton{
-    -fx-background-color: #037a68;
+    -fx-graphic: url("../images/dot.png"); 
+/*    -fx-background-color: #037a68;
     -fx-text-alignment: center;
     -fx-font-size: 50px;
-    -fx-font-weight: BOLD;
+    -fx-font-weight: BOLD;*/
 }
 
 #dashButton{
+    -fx-graphic: url("../images/dash.png");
     -fx-background-color: #037a68;
-    -fx-text-alignment: center;
+/*    -fx-text-alignment: center;
     -fx-font-size: 50px;
-    -fx-font-weight: BOLD;
+    -fx-font-weight: BOLD;*/
 }
 
 #returnButton{
