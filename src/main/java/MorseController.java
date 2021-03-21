@@ -1,7 +1,9 @@
 package main.java;
 
 import main.java.morseCode.*;
+
 import java.io.IOException;
+import com.jfoenix.controls.JFXButton;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -16,12 +18,12 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 public class MorseController {
-    @FXML private Button returnButton;
-    @FXML private Button dashButton;
-    @FXML private Button dotButton;
+    @FXML private JFXButton returnButton;
+    @FXML private JFXButton dashButton;
+    @FXML private JFXButton dotButton;
+    @FXML private JFXButton helpButton;
     @FXML private Button RunButton;
     @FXML private Button checkButton;
-    @FXML private Button helpButton;
     @FXML private ScrollPane helpScrollPane = new ScrollPane();
     @FXML private TextField morseText = new TextField();
     @FXML private Label wordLabel = new Label();
