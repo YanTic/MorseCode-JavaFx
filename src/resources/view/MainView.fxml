@@ -19,7 +19,7 @@
             <Button fx:id="dontPush" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#dontPushBttEvent" text="Don't push" />
             <JFXButton fx:id="githubButton" buttonType="RAISED" layoutX="36.0" layoutY="518.0" onAction="#githubEvent" prefHeight="64.0" prefWidth="64.0" stylesheets="@../styles/Main.css" />
             <JFXButton fx:id="settingsButton" buttonType="RAISED" layoutX="688.0" layoutY="518.0" onAction="#SettingsAction" prefHeight="64.0" prefWidth="64.0" stylesheets="@../styles/Main.css" />
-            <JFXButton fx:id="flagButton" buttonType="RAISED" layoutX="692.0" layoutY="434.0" prefHeight="64.0" prefWidth="64.0" />
+            <JFXButton fx:id="flagButton" buttonType="RAISED" layoutX="692.0" layoutY="434.0" onAction="#errorEvent" prefHeight="64.0" prefWidth="64.0" stylesheets="@../styles/Main.css" />
             <JFXButton fx:id="playButton" buttonType="RAISED" layoutX="295.0" layoutY="195.0" onAction="#playBttEvent" prefHeight="200.0" prefWidth="200.0" />
             <AnchorPane fx:id="githubPane" layoutY="411.0" prefHeight="64.0" prefWidth="359.0" visible="false">
                <children>
@@ -33,6 +33,21 @@
                   <Label layoutX="28.0" layoutY="38.0" text="https://github.com/YanTic">
                      <font>
                         <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="flagPane" layoutX="580.0" layoutY="338.0" opacity="0.85" prefHeight="80.0" prefWidth="220.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#64d12a" height="80.0" layoutY="5.0" stroke="TRANSPARENT" strokeType="INSIDE" width="220.0" />
+                  <Label layoutX="19.0" layoutY="18.0" prefHeight="70.0" prefWidth="182.0" text="If you would like to contribute to this little proyect, create a pull request on the repository, you must" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                     <font>
+                        <Font size="11.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="80.0" layoutY="2.0" text="Sorry :c">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
                      </font>
                   </Label>
                </children>
