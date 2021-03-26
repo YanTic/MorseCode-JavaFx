@@ -3,8 +3,12 @@ package main.java;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
+
+import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -13,6 +17,7 @@ import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,27 +30,33 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-public class MainController {
+public class MainController implements Initializable{
     @FXML private StackPane stackPane;
     @FXML private AnchorPane githubPane = new AnchorPane();
     @FXML private AnchorPane flagPane = new AnchorPane();
     @FXML private AnchorPane mainPane;
-    @FXML private JFXButton playButton;
+    @FXML private AnchorPane menuPane;
+    @FXML private JFXButton menuBtt;
     @FXML private JFXButton flagButton;
     @FXML private JFXButton settingsButton;
     @FXML private JFXButton githubButton;
+    @FXML private JFXButton exitBtt;
+    @FXML private JFXButton playBtt;
+    @FXML private JFXButton statsBtt;
+    @FXML private JFXButton tutorialBtt;
     @FXML private Button dontPush;
     @FXML private ImageView gifGithub;
     @FXML private Label morseLabel;    
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        stackPane.setOpacity(0);
+        doFadeTransition(stackPane);    
+    }
+
     @FXML
-    void playBttEvent(ActionEvent e) throws Exception{
-        //This change the scene to morse scene
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/MorseView.fxml"));
-        Stage morseView = (Stage) playButton.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
-        morseView.setScene(scene);
+    void menuEvent(ActionEvent e) {
+        doTranslateTransition(menuPane, menuBtt, 0, -menuPane.getPrefWidth());
     }
 
     @FXML
@@ -140,6 +151,46 @@ public class MainController {
             });
     -----
         */
+    }
+
+    public static void doFadeTransition(Node node) {
+        FadeTransition transition = new FadeTransition();
+        transition.setNode(node);
+        transition.setDuration(Duration.seconds(3));
+        transition.setFromValue(0);
+        transition.setToValue(1);
+        transition.play();
+    }
+
+    @FXML
+    void menuExitEvent(ActionEvent event) {
+        menuEvent(event);
+    }
+
+    @FXML
+    void playEvent(ActionEvent event) throws IOException {
+        //This change the scene to morse scene
+/*        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/MorseView.fxml"));
+        Stage morseView = (Stage) menuBtt.getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
+        morseView.setScene(scene);*/
+
+        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/MorseView.fxml"));
+        Stage morseView = (Stage) menuBtt.getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
+        morseView.setScene(scene);
+    }
+
+    @FXML
+    void statsEvent(ActionEvent event) {
+
+    }
+
+    @FXML
+    void tutorialEvent(ActionEvent event) {
+
     }
 
 }
