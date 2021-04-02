@@ -11,8 +11,9 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane fx:id="morsePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleOnKeyPressed" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MorseController">
+<AnchorPane fx:id="morsePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleOnKeyPressed" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MorseController">
    <children>
       <Button fx:id="checkButton" layoutX="683.0" layoutY="170.0" mnemonicParsing="false" onAction="#checkBttEvent" text="Check" />
       <Button fx:id="RunButton" layoutX="682.0" layoutY="94.0" mnemonicParsing="false" onAction="#RunBttEvent" stylesheets="@../styles/MorseView.css" text="Run" />
@@ -53,5 +54,15 @@
             </AnchorPane>
          </content>
       </ScrollPane>
+      <AnchorPane fx:id="tipPane" layoutY="65.0" prefHeight="165.0" prefWidth="235.0" visible="false">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="165.0" stroke="TRANSPARENT" strokeType="INSIDE" width="235.0" />
+            <ImageView fitHeight="170.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Tips/A.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
