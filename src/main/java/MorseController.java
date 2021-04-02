@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -27,6 +28,7 @@ import javafx.util.Duration;
 
 public class MorseController implements Initializable {
     @FXML private AnchorPane morsePane;
+    @FXML private AnchorPane tipPane = new AnchorPane();
     @FXML private JFXButton returnButton;
     @FXML private JFXButton dashButton;
     @FXML private JFXButton dotButton;
@@ -40,17 +42,28 @@ public class MorseController implements Initializable {
     MorseLanguage morseLanguage = new MorseLanguage();
     Words word = new Words();
     String textLabel, letter, letterToMorse;
+    Tip tip;
+
+/* If use extends Thread: Process1 thread1 = new Procces1();
+   If use implements Runnable: Thread thread2 = new Thread(new Process2()) */
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        morsePane.setOpacity(0);
         doFadeTransition(morsePane);            
+        RunBttEvent(null);
+        tip = new Tip(this);
     }
 
     @FXML
 	void dotEvent() {
         morseText.setText(morseText.getText() + ".");
         PlaySound.playSounds("src/resources/sounds/dot.wav");
+
+        //When the user don't type anything, the program shows a tip.
+        //In this case if press dot, the timer stop and restart its count;
+//        tip.stopTimer();
+//        showTip();
+        tip.updateTimer();
     }
 
     @FXML
@@ -145,5 +158,31 @@ public class MorseController implements Initializable {
         transition.play();
     }
 
-}
+    public static void stopTimer(){
+//        tip.stopTimer();
+    }
 
+    public void showTip(){
+        TranslateTransition transition = new TranslateTransition();
+        transition.setDuration(Duration.seconds(1.5));
+        transition.setNode(tipPane);
+        System.out.println("Hi this works");
+
+        if(tipPane.isVisible()){
+            transition.setFromX(0);
+            transition.setToX(-tipPane.getPrefWidth());
+            transition.play();
+
+            transition.setOnFinished(evnt ->{
+                tipPane.setVisible(false);
+            });
+        }
+        else{            
+            transition.setFromX(-tipPane.getPrefWidth());
+            transition.setToX(0);
+            transition.play();
+            tipPane.setVisible(true);
+        }
+    }
+
+}
