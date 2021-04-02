@@ -14,7 +14,7 @@
             "type": "java",
             "name": "Launch Main",
             "request": "launch",
-            "vmArgs": "--module-path /Users/ASUS/javafx-sdk-15.0.1/lib --add-modules javafx.controls,javafx.fxml",
+            "vmArgs": "--module-path /Users/ASUS/javafx-sdk-16/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "main.java.Main",
             "projectName": "MorseJavaFx_41229da3"
         }
