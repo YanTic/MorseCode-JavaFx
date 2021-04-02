@@ -11,10 +11,35 @@
 }
 
 /*          Buttons         */
-#playButton{
+#menuBtt{
     -fx-background-image: url("../images/playButton.png");
     -fx-background-color: transparent;
     
+}
+
+#playBtt{
+    -fx-background-color: #1d3340;
+}
+
+/*When the mouse is on it, change the color without do click*/
+#playBtt:hover{
+    -fx-background-color: #406375;
+}
+
+#statsBtt{
+    -fx-background-color: #1d3340;   
+}
+
+#statsBtt:hover{
+    -fx-background-color: #406375;
+}
+
+#tutorialBtt{
+    -fx-background-color: #1d3340;
+}
+
+#tutorialBtt:hover{
+    -fx-background-color: #406375;
 }
 
 #flagButton{

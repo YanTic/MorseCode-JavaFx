@@ -3,11 +3,17 @@ package main.java;
 import main.java.morseCode.*;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import com.jfoenix.controls.JFXButton;
 
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -15,9 +21,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
-public class MorseController {
+public class MorseController implements Initializable {
+    @FXML private AnchorPane morsePane;
     @FXML private JFXButton returnButton;
     @FXML private JFXButton dashButton;
     @FXML private JFXButton dotButton;
@@ -31,6 +40,12 @@ public class MorseController {
     MorseLanguage morseLanguage = new MorseLanguage();
     Words word = new Words();
     String textLabel, letter, letterToMorse;
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        morsePane.setOpacity(0);
+        doFadeTransition(morsePane);            
+    }
 
     @FXML
 	void dotEvent() {
@@ -119,6 +134,15 @@ public class MorseController {
         if(e.getText().equals("-")){
             dashEvent();
         }
+    }
+
+    public static void doFadeTransition(Node node) {
+        FadeTransition transition = new FadeTransition();
+        transition.setNode(node);
+        transition.setDuration(Duration.seconds(3));
+        transition.setFromValue(0);
+        transition.setToValue(1);
+        transition.play();
     }
 
 }
