@@ -21,6 +21,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -35,6 +37,7 @@ public class MorseController implements Initializable {
     @FXML private JFXButton helpButton;
     @FXML private Button RunButton;
     @FXML private Button checkButton;
+    @FXML private ImageView tipImage;
     @FXML private ScrollPane helpScrollPane = new ScrollPane();
     @FXML private TextField morseText = new TextField();
     @FXML private Label wordLabel = new Label();
@@ -42,7 +45,7 @@ public class MorseController implements Initializable {
     MorseLanguage morseLanguage = new MorseLanguage();
     Words word = new Words();
     String textLabel, letter, letterToMorse;
-    Tip tip;
+    Tip<Object> tip;
 
 /* If use extends Thread: Process1 thread1 = new Procces1();
    If use implements Runnable: Thread thread2 = new Thread(new Process2()) */
@@ -51,7 +54,7 @@ public class MorseController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         doFadeTransition(morsePane);            
         RunBttEvent(null);
-        tip = new Tip(this);
+        tip = new Tip<>(this);
     }
 
     @FXML
@@ -61,15 +64,22 @@ public class MorseController implements Initializable {
 
         //When the user don't type anything, the program shows a tip.
         //In this case if press dot, the timer stop and restart its count;
-//        tip.stopTimer();
-//        showTip();
-        tip.updateTimer();
+        tip.stopTimer();
+
+//      The tipPane only shows once when the user is typing the word in morse.
+//      So, the tip only disappear if the word is checked (Later this have to change for: when the
+//      user type the correct tranlation, because checked means correct or incorrect);
+        if(tipPane.isVisible() == false)
+            tip.updateTimer();
     }
 
     @FXML
     void dashEvent() {
         morseText.setText(morseText.getText() + "-");
         PlaySound.playSounds("src/resources/sounds/dash.wav");
+        tip.stopTimer();
+        if(tipPane.isVisible() == false)
+            tip.updateTimer();
     }
 
     @FXML
@@ -109,6 +119,10 @@ public class MorseController implements Initializable {
 
         letter = ""+textLabel.charAt(i);
         morse = morseLanguage.translate(letter);
+
+        if(tipPane.isVisible()){
+            showTip();
+        }
 
         if(morse.equals(morseText.getText())){
             try{
@@ -158,14 +172,11 @@ public class MorseController implements Initializable {
         transition.play();
     }
 
-    public static void stopTimer(){
-//        tip.stopTimer();
-    }
-
     public void showTip(){
         TranslateTransition transition = new TranslateTransition();
         transition.setDuration(Duration.seconds(1.5));
         transition.setNode(tipPane);
+
         System.out.println("Hi this works");
 
         if(tipPane.isVisible()){
@@ -177,7 +188,9 @@ public class MorseController implements Initializable {
                 tipPane.setVisible(false);
             });
         }
-        else{            
+        else{   
+            Image image = new Image("resources/images/Tips/"+letter+".jpg");
+            tipImage.setImage(image);         
             transition.setFromX(-tipPane.getPrefWidth());
             transition.setToX(0);
             transition.play();
