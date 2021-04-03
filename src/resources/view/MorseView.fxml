@@ -57,11 +57,7 @@
       <AnchorPane fx:id="tipPane" layoutY="65.0" prefHeight="165.0" prefWidth="235.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="165.0" stroke="TRANSPARENT" strokeType="INSIDE" width="235.0" />
-            <ImageView fitHeight="170.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/Tips/A.jpg" />
-               </image>
-            </ImageView>
+            <ImageView fx:id="tipImage" fitHeight="170.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>

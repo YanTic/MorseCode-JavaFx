@@ -7,17 +7,11 @@ import java.util.TimerTask;
 // this code is working at the sime time 
 
 public class Tip<FXMLDocumentController> {
-//    MorseController tipWindow = new MorseController();
     FXMLDocumentController controller ;
     Timer timer;
 
     //I can't call the method showTip(); because the tipPane doesn't appear
     //So i have to get the controller to show the tip-->(the pane) from that controller;
-    //Actually this method (setController) is not working right now. The constructor does it
-    public void setController(FXMLDocumentController controller){
-        this.controller = controller;
-    }
-
     public Tip(FXMLDocumentController controller){
         this.controller = controller;
 
@@ -35,7 +29,7 @@ public class Tip<FXMLDocumentController> {
             }        
         };
         timer = new Timer();
-        timer.schedule(task, 6000);
+        timer.schedule(task, 15000);
     }
 
     public void updateTimer(){
