@@ -5,6 +5,9 @@ import java.util.TimerTask;
 
 import javafx.application.Platform;
 
+//This class is called Check because checks the translation of the user
+//in morse code using Threads (Timer-TimerTask)
+
 public class Check<FXMLDocumentController> {
     FXMLDocumentController controller ;
     Timer timer;
@@ -23,19 +26,15 @@ public class Check<FXMLDocumentController> {
                 //the program don't execute the method checkBttEvent() and show exceptions
                 //This saved my whole life
                     Platform.runLater(()->{
-                        ((MorseController) controller).checkBttEvent(null);
+                        ((MorseController) controller).checkTranslation(null);
                     });
                         
                 }
-
-//                    ((MorseController) controller).run();
-//                    ((MorseController) controller).checkBttEvent(null);
-
             }        
         };
         
         timer = new Timer();
-        timer.schedule(task, 6000);
+        timer.schedule(task, 3100);
     }
 
     public void updateTimer(){
@@ -45,14 +44,14 @@ public class Check<FXMLDocumentController> {
                 if(controller != null){
                     System.out.println("Checking a NEW Translation. . .");   
                     Platform.runLater(()->{
-                        ((MorseController) controller).checkBttEvent(null);
+                        ((MorseController) controller).checkTranslation(null);
                     });
                 }
             }        
         };
         timer.cancel();
         timer = new Timer();
-        timer.schedule(task, 6000);
+        timer.schedule(task, 3100);
     }
 
     public void stopTimer(){
