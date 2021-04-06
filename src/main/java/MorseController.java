@@ -5,6 +5,8 @@ import main.java.morseCode.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import com.jfoenix.controls.JFXButton;
 
@@ -35,7 +37,6 @@ public class MorseController implements Initializable {
     @FXML private JFXButton dashButton;
     @FXML private JFXButton dotButton;
     @FXML private JFXButton helpButton;
-    @FXML private Button RunButton;
     @FXML private Button checkButton;
     @FXML private ImageView tipImage;
     @FXML private ScrollPane helpScrollPane = new ScrollPane();
@@ -46,6 +47,11 @@ public class MorseController implements Initializable {
     Words word = new Words();
     String textLabel, letter, letterToMorse;
     Tip<Object> tip;
+    Check<Object> check;
+    int lettersWrite;
+//    Timer timer;
+    Timer timer2;
+    boolean isRunning = false;
 
 /* If use extends Thread: Process1 thread1 = new Procces1();
    If use implements Runnable: Thread thread2 = new Thread(new Process2()) */
@@ -53,8 +59,9 @@ public class MorseController implements Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         doFadeTransition(morsePane);            
-        RunBttEvent(null);
+        runWords();
         tip = new Tip<>(this);
+        check = new Check<>(this);
     }
 
     @FXML
@@ -66,9 +73,30 @@ public class MorseController implements Initializable {
         //In this case if press dot, the timer stop and restart its count;
         tip.stopTimer();
 
+        /* if(morseText.getText().length() > 1){
+            stopCheck();
+            startCheck();
+        }
+        else
+            startCheck(); */
+
+/*         if(isRunning == true){
+            stopCheck();
+            startCheck();
+        }else
+            startCheck(); */
+
+
+        check.stopTimer();
+        check.updateTimer();
+
+
+
+
+
+//        checkLetter();
 //      The tipPane only shows once when the user is typing the word in morse.
-//      So, the tip only disappear if the word is checked (Later this have to change for: when the
-//      user type the correct tranlation, because checked means correct or incorrect);
+//      So, the tip only disappear if the word is correct;
         if(tipPane.isVisible() == false)
             tip.updateTimer();
     }
@@ -78,6 +106,26 @@ public class MorseController implements Initializable {
         morseText.setText(morseText.getText() + "-");
         PlaySound.playSounds("src/resources/sounds/dash.wav");
         tip.stopTimer();
+//        checkLetter();
+        /* if(morseText.getText().length() > 1){
+            stopCheck();
+            startCheck();
+        }
+        else
+            startCheck(); */
+
+/*         if(isRunning == true){
+            stopCheck();
+            startCheck();
+        }else
+            startCheck(); */
+
+
+        check.stopTimer();
+        check.updateTimer();
+
+
+
         if(tipPane.isVisible() == false)
             tip.updateTimer();
     }
@@ -92,10 +140,10 @@ public class MorseController implements Initializable {
         mainView.setScene(scene);
     }
 
-    @FXML
-    void RunBttEvent(ActionEvent event) {
+    public void runWords() {
         morseLanguage.setCounterLetters(0);
         morseText.clear();
+        lettersWrite = 0;
         textLabel = word.words[(int)(Math.random()*336)];
         wordLabel.setText(textLabel);
         System.out.println("\n|------Word: "+textLabel+" ------|");
@@ -109,7 +157,7 @@ public class MorseController implements Initializable {
         letter = ""+textLabel.charAt(0);
         letterLabel.setText(letter.toUpperCase());
 //        System.out.println(""+letter+" to morse is: "+morseLanguage.translate(letter)); 
-        checkBttEvent(event);
+        checkBttEvent(null);
     }
 
     @FXML
@@ -120,27 +168,30 @@ public class MorseController implements Initializable {
         letter = ""+textLabel.charAt(i);
         morse = morseLanguage.translate(letter);
 
-        if(tipPane.isVisible()){
-            showTip();
-        }
-
         if(morse.equals(morseText.getText())){
             try{
+                if(tipPane.isVisible()){
+                    showTip();
+                }
+
                 System.out.println(""+morseText.getText()+" is: "+morse+"  GOOD JOB!");
                 morseLanguage.setCounterLetters(++i);
                 i = morseLanguage.getCounterLetters();
                 morseText.clear();
+                lettersWrite = 0;
                 letter = ""+textLabel.charAt(i);
                 letterLabel.setText(letter.toUpperCase());
+
             }catch(Exception e){
                 //if(morseLanguage.getCounterLetters() > textLabel.length());
-                System.out.println("Correct Word");
-                RunBttEvent(event);
+                System.out.println("Correct Word");                
+                runWords();
             }
         }
         else{
             System.out.println(""+morseText.getText()+" is not: "+morse+"  Try again");  
             morseText.clear();
+            lettersWrite = 0;
         } 
     }
 
@@ -196,6 +247,54 @@ public class MorseController implements Initializable {
             transition.play();
             tipPane.setVisible(true);
         }
+    }
+
+    /* public void checkLetter(){
+        //Always when the user types something, check the translate every 3-4 seconds constantly
+        boolean isNew = false;
+        lettersWrite++;
+        timer = new Timer();
+        System.out.println("morseText: "+morseText.getText().length());
+        System.out.println("lettersWrite: "+lettersWrite);
+
+        TimerTask task = new TimerTask(){
+            @Override
+            public void run() {
+                checkBttEvent(null);
+            }    
+        };
+
+        timer.schedule(task, 3500);
+
+        if(lettersWrite == morseText.getText().length()){
+//            timer.cancel();
+            System.out.println("Hey this task is cancel, creating one more....");
+            timer.purge();
+            timer = new Timer();
+            timer.schedule(task, 3500);
+        }
+
+    } */
+
+// TRASH CODE   -----------------
+    public void startCheck(){
+        TimerTask task = new TimerTask(){
+            @Override
+            public void run() {                
+                checkBttEvent(null);
+                isRunning = false;
+            }    
+        };
+        Timer timer2 = new Timer();
+        timer2.schedule(task, 3500);
+        isRunning = true;
+    }
+
+    public void stopCheck(){
+//        if(timer2 != null){
+            timer2.cancel();
+            timer2.purge();
+        //}
     }
 
 }
