@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -12,7 +11,6 @@
 
 <AnchorPane fx:id="morsePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleOnKeyPressed" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MorseController">
    <children>
-      <Button fx:id="checkButton" layoutX="683.0" layoutY="170.0" mnemonicParsing="false" onAction="#checkBttEvent" text="Check" />
       <Label fx:id="wordLabel" layoutX="340.0" layoutY="40.0" text="Word" />
       <Label fx:id="letterLabel" layoutX="394.0" layoutY="150.0" text="W" />
       <TextField fx:id="morseText" editable="false" layoutX="233.0" layoutY="238.0" prefHeight="100.0" prefWidth="349.0" stylesheets="@../styles/MorseView.css" />
