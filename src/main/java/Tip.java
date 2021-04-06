@@ -22,15 +22,26 @@ public class Tip<FXMLDocumentController> {
                     System.out.println("Hi this is a Tip");                    
                     ((MorseController) controller).showTip();
                 }
-
-//                System.out.println("Hi this is a Tip");
-//                tipWindow.showTip();
-//                updateTimer();
             }        
         };
+        
         timer = new Timer();
-        timer.schedule(task, 15000);
+        timer.schedule(task, 8000);
     }
+
+/*     public Tip(){
+        TimerTask task = new TimerTask(){
+            @Override
+            public void run() {
+                if(controller != null){
+                    
+                }
+            }        
+        };
+        
+        timer = new Timer();
+        timer.schedule(task, 8000);
+    } */
 
     public void updateTimer(){
         TimerTask task = new TimerTask(){
@@ -44,7 +55,7 @@ public class Tip<FXMLDocumentController> {
         };
         timer.cancel();
         timer = new Timer();
-        timer.schedule(task, 6000);
+        timer.schedule(task, 8000);
     }
 
     public void stopTimer(){
