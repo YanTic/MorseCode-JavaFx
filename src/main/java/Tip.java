@@ -26,22 +26,8 @@ public class Tip<FXMLDocumentController> {
         };
         
         timer = new Timer();
-        timer.schedule(task, 8000);
+        timer.schedule(task, 8500);
     }
-
-/*     public Tip(){
-        TimerTask task = new TimerTask(){
-            @Override
-            public void run() {
-                if(controller != null){
-                    
-                }
-            }        
-        };
-        
-        timer = new Timer();
-        timer.schedule(task, 8000);
-    } */
 
     public void updateTimer(){
         TimerTask task = new TimerTask(){
@@ -55,7 +41,7 @@ public class Tip<FXMLDocumentController> {
         };
         timer.cancel();
         timer = new Timer();
-        timer.schedule(task, 8000);
+        timer.schedule(task, 8500);
     }
 
     public void stopTimer(){
