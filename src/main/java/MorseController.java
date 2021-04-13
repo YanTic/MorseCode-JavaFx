@@ -9,7 +9,10 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +27,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Line;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -35,6 +40,7 @@ public class MorseController implements Initializable {
     @FXML private JFXButton dotButton;
     @FXML private JFXButton helpButton;
     @FXML private ImageView tipImage;
+    @FXML private Line line = new Line();
     @FXML private ScrollPane helpScrollPane = new ScrollPane();
     @FXML private TextField morseText = new TextField();
     @FXML private Label wordLabel = new Label();
@@ -42,6 +48,7 @@ public class MorseController implements Initializable {
     MorseLanguage morseLanguage = new MorseLanguage();
     Words word = new Words();
     String textLabel, letter, letterToMorse;
+    double initialPosLine = line.getLayoutX();
     Tip<Object> tip;
     Check<Object> check;
 
@@ -50,6 +57,8 @@ public class MorseController implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
+        morseText.setFocusTraversable(false); //When i started the program the handle of the buttons doesn't work
+        morseText.setFont(new Font("Open Sans Extranegrita", 180)); //DON'T PIXEL MY DOTS/DASHES
         doFadeTransition(morsePane);            
         runWords();
         tip = new Tip<>(this);
@@ -67,6 +76,9 @@ public class MorseController implements Initializable {
 
         check.stopTimer();
         check.updateTimer();
+
+        //Test
+        
 
 //      The tipPane only shows once when the user is typing the word in morse.
 //      So, the tip only disappear if the word is correct;
@@ -97,22 +109,34 @@ public class MorseController implements Initializable {
     }
 
     public void runWords() {
+        //Move line
+        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.5), line);
+        tt.setFromX(lineToX);
+        tt.setToX(0);
+        tt.play(); 
+        lineFromX = 0;
+        lineToX = 37;
+
         morseLanguage.setCounterLetters(0);
         morseText.clear();
         textLabel = word.words[(int)(Math.random()*336)];
-        wordLabel.setText(textLabel);
+//        wordLabel.setText(textLabel);
+//      I want to separate the words like a spacing in word
+        String wordLabelText = "";
         System.out.println("\n|------Word: "+textLabel+" ------|");
         System.out.println("|------letters: "+textLabel.length()+" ------|");
         System.out.print("|------");
             for(int i=0; i<textLabel.length(); i++){
+                wordLabelText += " "+textLabel.charAt(i);
                 System.out.print("  "+textLabel.charAt(i));
             }
         System.out.print(" ------| \n\n");
 
+        wordLabel.setText(wordLabelText);
         letter = ""+textLabel.charAt(0);
         letterLabel.setText(letter.toUpperCase());
 //        System.out.println(""+letter+" to morse is: "+morseLanguage.translate(letter)); 
-        checkTranslation(null);
+//        checkTranslation(null);
     }
 
     public void checkTranslation(ActionEvent event) {
@@ -131,9 +155,11 @@ public class MorseController implements Initializable {
                 System.out.println(""+morseText.getText()+" is: "+morse+"  GOOD JOB!");
                 morseLanguage.setCounterLetters(++i);
                 i = morseLanguage.getCounterLetters();
-                morseText.clear();
                 letter = ""+textLabel.charAt(i);
-                letterLabel.setText(letter.toUpperCase());
+
+                //When the transition stop, change letter 
+                doScaleTransition(letterLabel);  
+//                moveLine(); 
 
             }catch(Exception e){
                 //if(morseLanguage.getCounterLetters() > textLabel.length());
@@ -172,6 +198,44 @@ public class MorseController implements Initializable {
         transition.setFromValue(0);
         transition.setToValue(1);
         transition.play();
+    }
+
+    public void doScaleTransition(Node node) {
+        ScaleTransition transition = new ScaleTransition();
+        transition.setNode(node);
+        transition.setInterpolator(Interpolator.LINEAR);
+        transition.setDuration(Duration.seconds(0.5));
+        transition.setToX(1.35);
+        transition.setToY(1.35);
+        System.out.println("The scale transition works");
+        transition.play();
+        transition.setOnFinished(evnt->{
+            transition.setDuration(Duration.seconds(0.6));
+            transition.setToX(1);
+            transition.setToY(1);
+            transition.play();
+            transition.setOnFinished(evt->{
+                Platform.runLater(()->{
+                    morseText.clear();                        
+                    letterLabel.setText(letter.toUpperCase());
+                    moveLine();
+                }); 
+            });
+        });
+    }
+
+    double lineFromX = 0, lineToX = 37;
+    public void moveLine(){
+        TranslateTransition tt = new TranslateTransition();
+        tt.setDuration(Duration.seconds(1.5));
+        tt.setNode(line);
+        tt.setFromX(lineFromX);
+        tt.setToX(lineToX);
+        tt.play();
+        tt.setOnFinished(evnt->{
+            lineFromX += 37;
+            lineToX += 37;
+        });
     }
 
     public void showTip(){

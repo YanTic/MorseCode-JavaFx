@@ -23,30 +23,23 @@
     -fx-background-color: transparent;
 }
 
-#runButton{
-    
-}
-
-#checkButton{
-    
-}
-
 #helpButton{
     -fx-graphic: url("../images/HelpButton.png");
     -fx-background-color: transparent;
 }
 
 #morseText{
-    -fx-font-size: 80px;
-    -fx-font-weight: BOLD;
+    -fx-background-color: #008F7A; 
 }
 
 #wordLabel{
     -fx-background-color: transparent;
-    -fx-font-size: 50px;
+    -fx-font-family: "Open Sans Extranegrita";
+    -fx-font-size: 50px; 
 }
 
 #letterLabel{
     -fx-background-color: transparent;
-    -fx-font-size: 30px;
+    -fx-font-family: "Open Sans Extranegrita";
+    -fx-font-size: 65px; 
 }
