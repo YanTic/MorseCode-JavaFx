@@ -80,8 +80,6 @@ public class MorseController implements Initializable {
         check.updateTimer();
 
         //Test
-        increaseProgress();
-        task.playFromStart();
 
 //      The tipPane only shows once when the user is typing the word in morse.
 //      So, the tip only disappear if the word is correct;
@@ -130,6 +128,14 @@ public class MorseController implements Initializable {
         wordLabel.setText(wordLabelText);
         letter = ""+textLabel.charAt(0);
         letterLabel.setText(letter.toUpperCase());
+
+        //Restart line progress
+        lowLim = higLim; 
+        higLim = 0;
+        progressTask();
+        task.playFromStart();
+        lowLim = -0.13; 
+
 //        System.out.println(""+letter+" to morse is: "+morseLanguage.translate(letter)); 
 //        checkTranslation(null);
     }
@@ -154,7 +160,12 @@ public class MorseController implements Initializable {
 
                 //When the transition stop, change letter 
                 doScaleTransition(letterLabel);  
-//                moveLine(); 
+
+                //Move the line progress
+                lowLim += 0.13;
+                higLim += 0.13;
+                progressTask();
+                task.playFromStart();
 
             }catch(Exception e){
                 //if(morseLanguage.getCounterLetters() > textLabel.length());
@@ -219,16 +230,16 @@ public class MorseController implements Initializable {
     }
 
     Timeline task;
-
-    public void increaseProgress(){
+    double lowLim = -0.13, higLim = 0;
+    public void progressTask(){
         task = new Timeline(
             new KeyFrame(
                 Duration.ZERO, 
-                new KeyValue(line.progressProperty(), 0)
+                new KeyValue(line.progressProperty(), lowLim)
             ),
             new KeyFrame(
-                Duration.seconds(2), 
-                new KeyValue(line.progressProperty(), 1))
+                Duration.seconds(1), 
+                new KeyValue(line.progressProperty(), higLim))
         );
         
     }
