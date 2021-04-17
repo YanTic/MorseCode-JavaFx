@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.ProgressBar?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -7,7 +8,6 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane fx:id="morsePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleOnKeyPressed" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MorseController">
@@ -16,7 +16,6 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff61" height="140.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#19b263" height="219.0" layoutY="381.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
       <Label fx:id="wordLabel" layoutX="458.0" layoutY="35.0" text="w o r d" />
-      <Line fx:id="line" endX="-79.0" fill="BLACK" layoutX="576.0" layoutY="100.0" startX="-100.0" strokeWidth="3.0" />
       <Label fx:id="letterLabel" layoutX="324.0" layoutY="25.0" text="W" />
       <JFXButton fx:id="dotButton" buttonType="RAISED" layoutX="185.0" layoutY="430.0" onAction="#dotEvent" prefHeight="93.0" prefWidth="192.0" ripplerFill="#c97373" style="-fx-background-radius: 5; -fx-background-color: #c97373;" stylesheets="@../styles/MorseView.css">
       </JFXButton>
@@ -42,5 +41,6 @@
             <ImageView fx:id="tipImage" fitHeight="170.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
+      <ProgressBar fx:id="line" layoutX="471.0" layoutY="105.0" prefHeight="6.0" prefWidth="200.0" progress="0" style="-fx-accent: #19b263;" />
    </children>
 </AnchorPane>

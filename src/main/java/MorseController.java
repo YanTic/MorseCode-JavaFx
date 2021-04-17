@@ -6,11 +6,15 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.gluonhq.charm.glisten.control.ProgressBar;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
 import javafx.animation.ScaleTransition;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -27,7 +31,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.shape.Line;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -40,7 +43,7 @@ public class MorseController implements Initializable {
     @FXML private JFXButton dotButton;
     @FXML private JFXButton helpButton;
     @FXML private ImageView tipImage;
-    @FXML private Line line = new Line();
+    @FXML private ProgressBar line = new ProgressBar();
     @FXML private ScrollPane helpScrollPane = new ScrollPane();
     @FXML private TextField morseText = new TextField();
     @FXML private Label wordLabel = new Label();
@@ -48,7 +51,6 @@ public class MorseController implements Initializable {
     MorseLanguage morseLanguage = new MorseLanguage();
     Words word = new Words();
     String textLabel, letter, letterToMorse;
-    double initialPosLine = line.getLayoutX();
     Tip<Object> tip;
     Check<Object> check;
 
@@ -78,7 +80,8 @@ public class MorseController implements Initializable {
         check.updateTimer();
 
         //Test
-        
+        increaseProgress();
+        task.playFromStart();
 
 //      The tipPane only shows once when the user is typing the word in morse.
 //      So, the tip only disappear if the word is correct;
@@ -109,14 +112,6 @@ public class MorseController implements Initializable {
     }
 
     public void runWords() {
-        //Move line
-        TranslateTransition tt = new TranslateTransition(Duration.seconds(0.5), line);
-        tt.setFromX(lineToX);
-        tt.setToX(0);
-        tt.play(); 
-        lineFromX = 0;
-        lineToX = 37;
-
         morseLanguage.setCounterLetters(0);
         morseText.clear();
         textLabel = word.words[(int)(Math.random()*336)];
@@ -218,24 +213,24 @@ public class MorseController implements Initializable {
                 Platform.runLater(()->{
                     morseText.clear();                        
                     letterLabel.setText(letter.toUpperCase());
-                    moveLine();
                 }); 
             });
         });
     }
 
-    double lineFromX = 0, lineToX = 37;
-    public void moveLine(){
-        TranslateTransition tt = new TranslateTransition();
-        tt.setDuration(Duration.seconds(1.5));
-        tt.setNode(line);
-        tt.setFromX(lineFromX);
-        tt.setToX(lineToX);
-        tt.play();
-        tt.setOnFinished(evnt->{
-            lineFromX += 37;
-            lineToX += 37;
-        });
+    Timeline task;
+
+    public void increaseProgress(){
+        task = new Timeline(
+            new KeyFrame(
+                Duration.ZERO, 
+                new KeyValue(line.progressProperty(), 0)
+            ),
+            new KeyFrame(
+                Duration.seconds(2), 
+                new KeyValue(line.progressProperty(), 1))
+        );
+        
     }
 
     public void showTip(){
