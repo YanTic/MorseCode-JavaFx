@@ -53,6 +53,7 @@ public class MorseController implements Initializable {
     String textLabel, letter, letterToMorse;
     Tip<Object> tip;
     Check<Object> check;
+    boolean music, musicEffects, doAssistance;
 
 /* If use extends Thread: Process1 thread1 = new Procces1();
    If use implements Runnable: Thread thread2 = new Thread(new Process2()) */
@@ -61,16 +62,30 @@ public class MorseController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         morseText.setFocusTraversable(false); //When i started the program the handle of the buttons doesn't work
         morseText.setFont(new Font("Open Sans Extranegrita", 180)); //DON'T PIXEL MY DOTS/DASHES
+
+        
+        System.out.println("Music: "+music + "\nEffects: "+musicEffects + "\nAssistance: "+doAssistance);
+
+
         doFadeTransition(morsePane);            
         runWords();
         tip = new Tip<>(this);
         check = new Check<>(this);
     }
 
+    public void setValues(boolean doAssistance, boolean music, boolean musicEffects){
+        this.doAssistance = doAssistance;
+        this.music = music;
+        this.musicEffects = musicEffects;
+    }
+
     @FXML
 	void dotEvent() {
         morseText.setText(morseText.getText() + ".");
-        PlaySound.playSounds("src/resources/sounds/dot.wav");
+
+        if(musicEffects){
+            PlaySound.playSounds("src/resources/sounds/dot.wav");
+        }
 
         //When the user don't type anything, the program shows a tip.
         //In this case if press dot, the timer stop and restart its count;
@@ -90,7 +105,9 @@ public class MorseController implements Initializable {
     @FXML
     void dashEvent() {
         morseText.setText(morseText.getText() + "-");
-        PlaySound.playSounds("src/resources/sounds/dash.wav");
+        if(musicEffects){
+            PlaySound.playSounds("src/resources/sounds/dash.wav");
+        }
         tip.stopTimer();
         check.stopTimer();
         check.updateTimer();
