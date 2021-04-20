@@ -26,6 +26,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -47,6 +48,7 @@ public class MainController implements Initializable{
     @FXML private Button dontPush;
     @FXML private ImageView gifGithub;
     @FXML private Label morseLabel;    
+    boolean music = true, musicEffects = true, doAssistance = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -66,28 +68,65 @@ public class MainController implements Initializable{
 
     @FXML
     void SettingsAction(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/SettingsView.fxml"));
+        //        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/SettingsView.fxml"));
         //        Stage settingsView = (Stage) playButton.getScene().getWindow();
         //        Scene scene = new Scene(root);
         //        scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
         //        settingsView.setScene(scene);
-        Scene scene = settingsButton.getScene();
-        root.translateYProperty().set(scene.getHeight());
-        stackPane.getChildren().add(root);
         
-        Timeline timeLine = new Timeline();
-        //Key Value for the fxml load from south to north, with Interpolator.EASE_IN this means slow-->fast
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        //Key Frame is the time that the KeyValue takes time to move        
-        KeyFrame kf = new KeyFrame(Duration.seconds(1.3), kv);
-        timeLine.getKeyFrames().add(kf);
+//        FXMLLoader loader = FXMLLoader.load(getClass().getResource("/resources/view/SettingsView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/SettingsView.fxml"));
+        Parent root = loader.load();
+
+        //Set Values
+        SettingsController ssCt = loader.getController();
+        ssCt.setValues(doAssistance, music, musicEffects);
+
+        //Show controller
+        Stage settingsView = (Stage) settingsButton.getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        settingsView.setScene(scene);
+
+        //        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+//        Scene scene = settingsButton.getScene();
+//        stage.setScene(scene);
+//        Scene scene = new Scene(root, 800, 600);
+        
+
+
+
+
+
+
+        //        stackPane.getChildren().add(root);
+        //        root.translateYProperty().set(scene.getHeight());
+        
+/*         //Transitions
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.seconds(1.3), 
+                new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN))
+        );
+        
         timeLine.setOnFinished(eventS->{
             stackPane.getChildren().remove(mainPane);
         });
         settingsButton.setDisable(true);
-        timeLine.play();
-    
+        timeLine.play(); */
+
+        /*         //Key Value for the fxml load from south to north, with Interpolator.EASE_IN this means slow-->fast
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        //Key Frame is the time that the KeyValue takes time to move        
+        KeyFrame kf = new KeyFrame(Duration.seconds(1.3), kv);
+        timeLine.getKeyFrames().add(kf); */
     }
+
+    public void setValues(boolean doAssistance, boolean music, boolean musicEffects){
+        this.doAssistance = doAssistance;
+        this.music = music;
+        this.musicEffects = musicEffects;
+    }
+
     @FXML
     void githubPage(MouseEvent event) {
         try{
@@ -176,11 +215,17 @@ public class MainController implements Initializable{
         scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
         morseView.setScene(scene);*/
 
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/MorseView.fxml"));
-        Stage morseView = (Stage) menuBtt.getScene().getWindow();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MorseView.fxml"));
+        Parent root = loader.load();
+
+        MorseController morCt = loader.getController();
+        morCt.setValues(doAssistance, music, musicEffects);
+        
+        Stage morseView = (Stage) playBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
         morseView.setScene(scene);
+
     }
 
     @FXML
