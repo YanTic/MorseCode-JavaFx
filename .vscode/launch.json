@@ -6,17 +6,17 @@
     "configurations": [
         {
             "type": "java",
-            "name": "Launch Current File",
-            "request": "launch",
-            "mainClass": "${file}"
-        },
-        {
-            "type": "java",
             "name": "Launch Main",
             "request": "launch",
             "vmArgs": "--module-path /Users/ASUS/javafx-sdk-16/lib --add-modules javafx.controls,javafx.fxml",
             "mainClass": "main.java.Main",
             "projectName": "MorseJavaFx_41229da3"
+        },
+        {
+            "type": "java",
+            "name": "Launch Current File",
+            "request": "launch",
+            "mainClass": "${file}"
         }
     ]
 }
