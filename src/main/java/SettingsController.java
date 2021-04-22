@@ -15,7 +15,9 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -46,13 +48,21 @@ public class SettingsController implements Initializable{
     Parent root;
     boolean music, musicEffects, doAssistance;
 
+/*  DELETE THIIIIIIIS
+    DELETE THE USSELES COMMENTS
+    AND THE SLIDER DO SOMETHING    
+*/
+
+
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
 //        musicToggBtt.selectedProperty().set(true);
 //        effectsToggBtt.selectedProperty().set(true);
 //        assistanceToggleBtt.selectedProperty().set(true);
         sliderBrightness.valueProperty().set(80);
-        
+//        SettingsPane.setVisible(false);
+        show(/* SettingsPane, exitBtt, */ SettingsPane.getPrefHeight(), 0);
+
         try {
             loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
             root = loader.load();
@@ -73,7 +83,26 @@ public class SettingsController implements Initializable{
         //Show controller
         Stage mainView = (Stage) exitBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
-        mainView.setScene(scene);
+//        mainView.setScene(scene);
+
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.ZERO,
+                new KeyValue(SettingsPane.translateYProperty(), 0)
+            ),
+            new KeyFrame(
+                Duration.seconds(1.5), 
+                new KeyValue(SettingsPane.translateYProperty(), SettingsPane.getPrefHeight(), Interpolator.EASE_IN))
+        );
+        timeLine.setOnFinished(evnt->{
+            mainView.setScene(scene);
+        });
+        timeLine.play();
+
+
+
+
+
         /* Parent root = FXMLLoader.load(getClass().getResource("/resources/view/MainView.fxml"));
         Scene scene = exitBtt.getScene();
         root.translateYProperty().set(-scene.getHeight());
@@ -148,4 +177,60 @@ public class SettingsController implements Initializable{
         this.musicEffects = musicEffects;
     } */
 
+
+    private void show(/* Node node, JFXButton button ,*/ double fromY, double toY){
+        /* root.translateYProperty().set(SettingsPane.getHeight());
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.seconds(1.3), 
+                new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN))
+        );
+//        settingsButton.setDisable(true);
+        timeLine.play(); */
+
+
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.ZERO,
+                new KeyValue(SettingsPane.translateYProperty(), fromY)
+            ),
+            new KeyFrame(
+                Duration.seconds(1.3), 
+                new KeyValue(SettingsPane.translateYProperty(), toY, Interpolator.EASE_IN)
+            )
+        );
+        timeLine.play();
+
+//These two animations are the same, not now :(
+
+
+//THIS TRANSITION WORKS
+        /* TranslateTransition transition = new TranslateTransition();
+        transition.setDuration(Duration.seconds(1.3));
+        transition.setNode(node);
+
+        if(node.isVisible()){
+            button.setDisable(true);
+            transition.setFromY(toY);
+            transition.setToY(fromY);
+            transition.play();
+
+            transition.setOnFinished(evnt ->{
+                node.setVisible(false);
+                button.setDisable(false);
+            });
+        }
+        else{
+            button.setDisable(true);
+            transition.setFromY(fromY);
+            transition.setToY(toY);
+            transition.play();
+            node.setVisible(true);
+
+            transition.setOnFinished(evnt ->{
+                button.setDisable(false);
+            });
+        } */
+
+    }
 }
