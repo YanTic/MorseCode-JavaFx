@@ -47,6 +47,8 @@ public class SettingsController implements Initializable{
     FXMLLoader loader;
     Parent root;
     boolean music, musicEffects, doAssistance;
+    double brightness;
+    Settings settings;
 
 /*  DELETE THIIIIIIIS
     DELETE THE USSELES COMMENTS
@@ -59,7 +61,7 @@ public class SettingsController implements Initializable{
 //        musicToggBtt.selectedProperty().set(true);
 //        effectsToggBtt.selectedProperty().set(true);
 //        assistanceToggleBtt.selectedProperty().set(true);
-        sliderBrightness.valueProperty().set(80);
+        sliderBrightness.valueProperty().set(85);
 //        SettingsPane.setVisible(false);
         show(/* SettingsPane, exitBtt, */ SettingsPane.getPrefHeight(), 0);
 
@@ -146,13 +148,19 @@ public class SettingsController implements Initializable{
         music = musicToggBtt.selectedProperty().getValue();
         musicEffects = effectsToggBtt.selectedProperty().getValue();
         doAssistance = assistanceToggleBtt.selectedProperty().getValue();
+        brightness = sliderBrightness.getValue();
 
-        setValues(doAssistance, music, musicEffects);
+        settings.setMusic(music);
+        settings.setMusicEffects(musicEffects);
+        settings.setDoAssistance(doAssistance);
+        settings.setBrightness(brightness);
+
+        setValues(settings/* , doAssistance, music, musicEffects */);
 
 //        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
 //        Parent root = loader.load();
         MainController mainCt = loader.getController();
-        mainCt.setValues(doAssistance, music, musicEffects);
+        mainCt.setValues(settings/* doAssistance, music, musicEffects */);
         
         Alert alert = new Alert(AlertType.INFORMATION, "Saved"/* , javafx.scene.control.ButtonType.OK */);
 //        alert.getDialogPane().setMinHeight(SettingsPane.USE_PREF_SIZE);
@@ -165,10 +173,17 @@ public class SettingsController implements Initializable{
 //        sliderBrightness.valueProperty().set();
     }
 
-    public void setValues(boolean doAssistance, boolean music, boolean musicEffects){
-        assistanceToggleBtt.selectedProperty().set(doAssistance);
+    public void setValues(Settings settings){
+        this.settings = settings;
+
+        assistanceToggleBtt.selectedProperty().set(settings.getDoAssistance());
+        effectsToggBtt.selectedProperty().set(settings.getMusicEffects());
+        musicToggBtt.selectedProperty().set(settings.getMusic());
+        sliderBrightness.valueProperty().set(settings.getBrightness());
+
+/*         assistanceToggleBtt.selectedProperty().set(doAssistance);
         effectsToggBtt.selectedProperty().set(musicEffects);
-        musicToggBtt.selectedProperty().set(music); 
+        musicToggBtt.selectedProperty().set(music);  */
     }
 
     /* public void setValues(boolean doAssistance, boolean music, boolean musicEffects){

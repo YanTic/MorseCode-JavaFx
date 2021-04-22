@@ -48,6 +48,7 @@ public class MainController implements Initializable{
     @FXML private Button dontPush;
     @FXML private ImageView gifGithub;
     @FXML private Label morseLabel;    
+    Settings settings = new Settings();
     boolean music = true, musicEffects = true, doAssistance = true;
 
     @Override
@@ -80,7 +81,7 @@ public class MainController implements Initializable{
 
         //Set Values
         SettingsController ssCt = loader.getController();
-        ssCt.setValues(doAssistance, music, musicEffects);
+        ssCt.setValues(settings);
 
         //Show controller
         Stage settingsView = (Stage) settingsButton.getScene().getWindow();
@@ -121,10 +122,11 @@ public class MainController implements Initializable{
         timeLine.getKeyFrames().add(kf); */
     }
 
-    public void setValues(boolean doAssistance, boolean music, boolean musicEffects){
-        this.doAssistance = doAssistance;
+    public void setValues(Settings settings){
+        this.settings = settings;
+        /* this.doAssistance = doAssistance;
         this.music = music;
-        this.musicEffects = musicEffects;
+        this.musicEffects = musicEffects; */
     }
 
     @FXML
@@ -219,7 +221,7 @@ public class MainController implements Initializable{
         Parent root = loader.load();
 
         MorseController morCt = loader.getController();
-        morCt.setValues(doAssistance, music, musicEffects);
+        morCt.setValues(settings);
         
         Stage morseView = (Stage) playBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
