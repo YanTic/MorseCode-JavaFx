@@ -119,7 +119,14 @@ public class MorseController implements Initializable {
     @FXML
     void returnBttEvent(ActionEvent event) throws IOException {
         // This change the scene, return to the main scene
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
+        Parent root = loader.load();
+
+        //Well, you can think that, this is not necessary, but when i press the return
+        //button, the settings rebbot, so i have to send the values again
+        MainController mainCt = loader.getController();
+        mainCt.setValues(doAssistance, music, musicEffects);
+
         Stage mainView = (Stage) returnButton.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
