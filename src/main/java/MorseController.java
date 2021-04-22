@@ -53,6 +53,7 @@ public class MorseController implements Initializable {
     String textLabel, letter, letterToMorse;
     Tip<Object> tip;
     Check<Object> check;
+    Settings settings;
     boolean music, musicEffects, doAssistance;
 
 /* If use extends Thread: Process1 thread1 = new Procces1();
@@ -73,17 +74,18 @@ public class MorseController implements Initializable {
         check = new Check<>(this);
     }
 
-    public void setValues(boolean doAssistance, boolean music, boolean musicEffects){
-        this.doAssistance = doAssistance;
+    public void setValues(Settings settings){
+        this.settings = settings;
+        /* this.doAssistance = doAssistance;
         this.music = music;
-        this.musicEffects = musicEffects;
+        this.musicEffects = musicEffects; */
     }
 
     @FXML
 	void dotEvent() {
         morseText.setText(morseText.getText() + ".");
 
-        if(musicEffects){
+        if(settings.getMusicEffects()){
             PlaySound.playSounds("src/resources/sounds/dot.wav");
         }
 
@@ -105,7 +107,8 @@ public class MorseController implements Initializable {
     @FXML
     void dashEvent() {
         morseText.setText(morseText.getText() + "-");
-        if(musicEffects){
+
+        if(settings.getMusicEffects()){
             PlaySound.playSounds("src/resources/sounds/dash.wav");
         }
         tip.stopTimer();
@@ -125,7 +128,7 @@ public class MorseController implements Initializable {
         //Well, you can think that, this is not necessary, but when i press the return
         //button, the settings rebbot, so i have to send the values again
         MainController mainCt = loader.getController();
-        mainCt.setValues(doAssistance, music, musicEffects);
+        mainCt.setValues(settings);
 
         Stage mainView = (Stage) returnButton.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
