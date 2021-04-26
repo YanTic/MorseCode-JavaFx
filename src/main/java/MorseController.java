@@ -31,11 +31,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MorseController implements Initializable {
+    @FXML private StackPane stackPane;
     @FXML private AnchorPane morsePane;
     @FXML private AnchorPane tipPane = new AnchorPane();
     @FXML private JFXButton returnButton;
@@ -68,7 +70,8 @@ public class MorseController implements Initializable {
         System.out.println("Music: "+music + "\nEffects: "+musicEffects + "\nAssistance: "+doAssistance);
 
 
-        doFadeTransition(morsePane);            
+//        doFadeTransition(morsePane);   
+        doFadeTransition(stackPane);   
         runWords();
         tip = new Tip<>(this);
         check = new Check<>(this);
@@ -76,6 +79,7 @@ public class MorseController implements Initializable {
 
     public void setValues(Settings settings){
         this.settings = settings;
+        morsePane.setOpacity(settings.getBrightness());
         /* this.doAssistance = doAssistance;
         this.music = music;
         this.musicEffects = musicEffects; */
@@ -224,7 +228,7 @@ public class MorseController implements Initializable {
         }
     }
 
-    public static void doFadeTransition(Node node) {
+    public void doFadeTransition(Node node) {
         FadeTransition transition = new FadeTransition();
         transition.setNode(node);
         transition.setDuration(Duration.seconds(3));

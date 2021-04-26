@@ -16,6 +16,8 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -23,9 +25,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -63,6 +68,17 @@ public class SettingsController implements Initializable{
 //        assistanceToggleBtt.selectedProperty().set(true);
         sliderBrightness.valueProperty().set(85);
 //        SettingsPane.setVisible(false);
+
+        sliderBrightness.valueProperty().addListener(new ChangeListener<Number>(){
+            @Override
+            public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
+                panelUp.setOpacity(sliderBrightness.getValue());
+                panelDown.setOpacity(sliderBrightness.getValue());
+            }
+        });
+
+
+
         show(/* SettingsPane, exitBtt, */ SettingsPane.getPrefHeight(), 0);
 
         try {
@@ -139,16 +155,13 @@ public class SettingsController implements Initializable{
     }
 
     @FXML
-    void sliderEvent(MouseEvent event) {
-
-    }
-
-    @FXML
     void saveEvent(ActionEvent event) throws IOException {
         music = musicToggBtt.selectedProperty().getValue();
         musicEffects = effectsToggBtt.selectedProperty().getValue();
         doAssistance = assistanceToggleBtt.selectedProperty().getValue();
         brightness = sliderBrightness.getValue();
+
+//        rectBrightness.setOpacity(brightness / 100);
 
         settings.setMusic(music);
         settings.setMusicEffects(musicEffects);
@@ -180,6 +193,8 @@ public class SettingsController implements Initializable{
         effectsToggBtt.selectedProperty().set(settings.getMusicEffects());
         musicToggBtt.selectedProperty().set(settings.getMusic());
         sliderBrightness.valueProperty().set(settings.getBrightness());
+        panelUp.setOpacity(settings.getBrightness());
+        panelDown.setOpacity(settings.getBrightness());
 
 /*         assistanceToggleBtt.selectedProperty().set(doAssistance);
         effectsToggBtt.selectedProperty().set(musicEffects);
@@ -248,4 +263,5 @@ public class SettingsController implements Initializable{
         } */
 
     }
+
 }

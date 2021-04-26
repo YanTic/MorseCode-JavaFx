@@ -8,7 +8,7 @@ public class Settings {
         music = true; 
         musicEffects = true; 
         doAssistance = true;
-        brightness = 85;
+        brightness = 0.85;
     }
 
     //  Setters
