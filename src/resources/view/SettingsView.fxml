@@ -31,7 +31,7 @@
                   <Font name="System Bold" size="21.0" />
                </font>
             </Label>
-            <JFXToggleButton fx:id="assistanceToggleBtt" layoutX="249.0" layoutY="295.0" onAction="#assistanceEvent" />
+            <JFXToggleButton fx:id="assistanceToggleBtt" layoutX="249.0" layoutY="295.0" />
             <Label fx:id="informationLb" layoutX="22.0" layoutY="320.0" prefHeight="80.0" prefWidth="174.0" text="When you don't remember a letter in morse, automatically the program will show you the translation" textAlignment="JUSTIFY" wrapText="true" />
          </children>
       </AnchorPane>

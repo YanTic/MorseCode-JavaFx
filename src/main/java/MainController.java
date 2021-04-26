@@ -9,10 +9,6 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.animation.FadeTransition;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,7 +22,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -49,7 +44,7 @@ public class MainController implements Initializable{
     @FXML private ImageView gifGithub;
     @FXML private Label morseLabel;    
     Settings settings = new Settings();
-    boolean music = true, musicEffects = true, doAssistance = true;
+    boolean music, musicEffects, doAssistance;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -69,13 +64,6 @@ public class MainController implements Initializable{
 
     @FXML
     void SettingsAction(ActionEvent event) throws IOException {
-        //        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/SettingsView.fxml"));
-        //        Stage settingsView = (Stage) playButton.getScene().getWindow();
-        //        Scene scene = new Scene(root);
-        //        scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
-        //        settingsView.setScene(scene);
-        
-//        FXMLLoader loader = FXMLLoader.load(getClass().getResource("/resources/view/SettingsView.fxml"));
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/SettingsView.fxml"));
         Parent root = loader.load();
 
@@ -87,47 +75,11 @@ public class MainController implements Initializable{
         Stage settingsView = (Stage) settingsButton.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         settingsView.setScene(scene);
-
-        //        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        Scene scene = settingsButton.getScene();
-//        stage.setScene(scene);
-//        Scene scene = new Scene(root, 800, 600);
-        
-
-
-
-
-
-
-        //        stackPane.getChildren().add(root);
-        //        root.translateYProperty().set(scene.getHeight());
-        
-/*         //Transitions
-        Timeline timeLine = new Timeline(
-            new KeyFrame(
-                Duration.seconds(1.3), 
-                new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN))
-        );
-        
-        timeLine.setOnFinished(eventS->{
-            stackPane.getChildren().remove(mainPane);
-        });
-        settingsButton.setDisable(true);
-        timeLine.play(); */
-
-        /*         //Key Value for the fxml load from south to north, with Interpolator.EASE_IN this means slow-->fast
-        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
-        //Key Frame is the time that the KeyValue takes time to move        
-        KeyFrame kf = new KeyFrame(Duration.seconds(1.3), kv);
-        timeLine.getKeyFrames().add(kf); */
     }
 
     public void setValues(Settings settings){
         this.settings = settings;
         mainPane.setOpacity(settings.getBrightness());
-        /* this.doAssistance = doAssistance;
-        this.music = music;
-        this.musicEffects = musicEffects; */
     }
 
     @FXML
@@ -173,26 +125,8 @@ public class MainController implements Initializable{
             transition.play();
             node.setVisible(true);
 
-            transition.setOnFinished(evnt ->{
-                button.setDisable(false);
-            });
+            transition.setOnFinished(evnt -> {button.setDisable(false);});
         }
-
-        /*Errors during code creation
-    -----Look, now i understand, when the transition is call play(); keep run, i mean
-         The code calls githubPane.setVisible(true); as well, if you want to see, put inside
-         the lambda expression githubPane.setVisible(true); and the panel doesn't appear 
-         until the animation finishes. So, that was the problem when the Pane dissapears in
-         "if(githubPane.isVisible()){"
-
-    -----For some reason, when i use this automatically or quickly the githubpane isn't visible
-         And the transition doesn't load, that's why i'm using lambda;
-            transition.setOnFinished(evnt ->{
-                githubPane.setVisible(false);
-                githubButton.setDisable(false);
-            });
-    -----
-        */
     }
 
     public static void doFadeTransition(Node node) {
@@ -211,13 +145,6 @@ public class MainController implements Initializable{
 
     @FXML
     void playEvent(ActionEvent event) throws IOException {
-        //This change the scene to morse scene
-/*        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/MorseView.fxml"));
-        Stage morseView = (Stage) menuBtt.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
-        morseView.setScene(scene);*/
-
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MorseView.fxml"));
         Parent root = loader.load();
 
@@ -228,7 +155,6 @@ public class MainController implements Initializable{
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
         morseView.setScene(scene);
-
     }
 
     @FXML
