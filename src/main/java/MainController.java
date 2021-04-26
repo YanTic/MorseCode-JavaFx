@@ -124,6 +124,7 @@ public class MainController implements Initializable{
 
     public void setValues(Settings settings){
         this.settings = settings;
+        mainPane.setOpacity(settings.getBrightness());
         /* this.doAssistance = doAssistance;
         this.music = music;
         this.musicEffects = musicEffects; */
