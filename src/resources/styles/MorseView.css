@@ -1,3 +1,7 @@
+#stackPane{
+    -fx-background-color: #1d1e1e;
+}
+
 #morsePane{
     -fx-background-color: #008F7A;
 }

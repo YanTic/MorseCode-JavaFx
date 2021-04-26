@@ -14,6 +14,7 @@
 
 <StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.MainController">
    <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d1e1e" height="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
       <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/Main.css">
          <children>
             <Label fx:id="morseLabel" layoutX="66.0" layoutY="46.0" stylesheets="@../styles/Main.css" text="Morse Desktop" />
