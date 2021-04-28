@@ -158,8 +158,16 @@ public class MainController implements Initializable{
     }
 
     @FXML
-    void statsEvent(ActionEvent event) {
+    void statsEvent(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/StatsView.fxml"));
+        Parent root = loader.load();
 
+        StatsController staCt = loader.getController();
+        staCt.setValues(settings);
+        
+        Stage statsView = (Stage) statsBtt.getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        statsView.setScene(scene);
     }
 
     @FXML
