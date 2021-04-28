@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.StatsController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d1e1e" height="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
+      <AnchorPane fx:id="generalPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFBC69;">
+         <children>
+            <Label layoutX="304.0" layoutY="15.0" text="General Stats">
+               <font>
+                  <Font name="System Bold" size="38.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="backBtt" layoutX="32.0" layoutY="23.0" onAction="#backEvent" text="Back" />
+            <LineChart fx:id="lineChart" layoutX="32.0" layoutY="71.0" prefHeight="294.0" prefWidth="371.0" title="Words">
+              <xAxis>
+                <CategoryAxis fx:id="lineX" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis fx:id="lineY" side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <PieChart fx:id="pieChart" layoutX="503.0" layoutY="92.0" prefHeight="178.0" prefWidth="226.0" style="-fx-background-color: grey;" />
+            <HBox layoutX="59.0" layoutY="462.0" prefHeight="117.0" prefWidth="707.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="249.0" prefWidth="253.0">
+                     <children>
+                        <Label text="Time Practicing">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label text="Tips Showed">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label text="Correct Letters">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="117.0" prefWidth="98.0" style="-fx-background-color: orange;">
+                     <children>
+                        <Label fx:id="timePracticing" text="0:00">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="tipsShowed" text="0">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="correctLetters" text="0">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="117.0" prefWidth="357.0">
+                     <children>
+                        <HBox alignment="TOP_CENTER" prefHeight="54.0" prefWidth="507.0">
+                           <children>
+                              <VBox alignment="TOP_CENTER" prefHeight="54.0" prefWidth="221.0">
+                                 <children>
+                                    <Label prefHeight="39.0" prefWidth="263.0" text="Letter Most Typed">
+                                       <font>
+                                          <Font size="27.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="TOP_CENTER" prefHeight="39.0" prefWidth="70.0" style="-fx-background-color: orange;">
+                                 <children>
+                                    <Label fx:id="letterMostTyped" text="T">
+                                       <font>
+                                          <Font name="System Bold" size="27.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" style="-fx-border-color: black; -fx-border-radius: 35;">
+                           <children>
+                              <Label text="Prefer Word">
+                                 <font>
+                                    <Font size="27.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="preferWord" prefHeight="39.0" prefWidth="250.0" text="LightningMcQueen">
+                                 <font>
+                                    <Font name="System Bold" size="27.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox layoutX="66.0" layoutY="345.0" prefHeight="55.0" prefWidth="298.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="84.0" prefWidth="253.0">
+                     <children>
+                        <Label text="Correct Words">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label text="Incorrect Words">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="78.0" prefWidth="76.0" style="-fx-background-color: orange;">
+                     <children>
+                        <Label fx:id="correctWords" text="110">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="incorrectWords" text="0">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox layoutX="456.0" layoutY="277.0" prefHeight="117.0" prefWidth="321.0">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="117.0" prefWidth="301.0">
+                     <children>
+                        <Label text="Times Typed">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label text="Total Words Typed">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                        <Label text="Total Letters Typed">
+                           <font>
+                              <Font size="27.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="117.0" prefWidth="123.0" style="-fx-background-color: orange;">
+                     <children>
+                        <Label fx:id="timesTyped" text="2000">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="wordsTyped" text="0">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lettersTyped" text="0">
+                           <font>
+                              <Font name="System Bold" size="27.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
