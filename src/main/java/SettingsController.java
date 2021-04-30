@@ -47,6 +47,7 @@ public class SettingsController implements Initializable{
     boolean music, musicEffects, doAssistance;
     double brightness;
     Settings settings;
+    Stats stats;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -110,11 +111,11 @@ public class SettingsController implements Initializable{
         settings.setDoAssistance(doAssistance);
         settings.setBrightness(brightness);
 
-        setValues(settings);
+        setValues(settings, stats);
 
         //This sends the class settings to the main controller
         MainController mainCt = loader.getController();
-        mainCt.setValues(settings);
+        mainCt.setValues(settings, stats);
         
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setContentText("Settings Saved");
@@ -122,8 +123,9 @@ public class SettingsController implements Initializable{
         alert.show();
     }
 
-    public void setValues(Settings settings){
+    public void setValues(Settings settings, Stats stats){
         this.settings = settings;
+        this.stats = stats;
 
         assistanceToggleBtt.selectedProperty().set(settings.getDoAssistance());
         effectsToggBtt.selectedProperty().set(settings.getMusicEffects());

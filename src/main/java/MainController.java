@@ -44,6 +44,7 @@ public class MainController implements Initializable{
     @FXML private ImageView gifGithub;
     @FXML private Label morseLabel;    
     Settings settings = new Settings();
+    Stats stats = new Stats();
     boolean music, musicEffects, doAssistance;
 
     @Override
@@ -69,7 +70,7 @@ public class MainController implements Initializable{
 
         //Set Values
         SettingsController ssCt = loader.getController();
-        ssCt.setValues(settings);
+        ssCt.setValues(settings, stats);
 
         //Show controller
         Stage settingsView = (Stage) settingsButton.getScene().getWindow();
@@ -77,8 +78,9 @@ public class MainController implements Initializable{
         settingsView.setScene(scene);
     }
 
-    public void setValues(Settings settings){
+    public void setValues(Settings settings, Stats stats){
         this.settings = settings;
+        this.stats = stats;
         mainPane.setOpacity(settings.getBrightness());
     }
 
@@ -149,7 +151,7 @@ public class MainController implements Initializable{
         Parent root = loader.load();
 
         MorseController morCt = loader.getController();
-        morCt.setValues(settings);
+        morCt.setValues(settings, stats);
         
         Stage morseView = (Stage) playBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
@@ -163,7 +165,7 @@ public class MainController implements Initializable{
         Parent root = loader.load();
 
         StatsController staCt = loader.getController();
-        staCt.setValues(settings);
+        staCt.setValues(settings, stats);
         
         Stage statsView = (Stage) statsBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);

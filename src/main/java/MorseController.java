@@ -44,6 +44,7 @@ public class MorseController implements Initializable {
     @FXML private JFXButton dashButton;
     @FXML private JFXButton dotButton;
     @FXML private JFXButton helpButton;
+    @FXML private JFXButton prefWordBtt;
     @FXML private ImageView tipImage;
     @FXML private ProgressBar line = new ProgressBar();
     @FXML private ScrollPane helpScrollPane = new ScrollPane();
@@ -56,6 +57,7 @@ public class MorseController implements Initializable {
     Tip<Object> tip;
     Check<Object> check;
     Settings settings;
+    Stats stats;
     boolean music, musicEffects, doAssistance;
 
 /* If use extends Thread: Process1 thread1 = new Procces1();
@@ -77,8 +79,9 @@ public class MorseController implements Initializable {
         check = new Check<>(this);
     }
 
-    public void setValues(Settings settings){
+    public void setValues(Settings settings, Stats stats){
         this.settings = settings;
+        this.stats = stats;
         morsePane.setOpacity(settings.getBrightness());
         /* this.doAssistance = doAssistance;
         this.music = music;
@@ -102,6 +105,9 @@ public class MorseController implements Initializable {
 
         //Test
 
+        //Stats
+        stats.timesTyped++;
+
 //      The tipPane only shows once when the user is typing the word in morse.
 //      So, the tip only disappear if the word is correct;
         if(tipPane.isVisible() == false)
@@ -118,6 +124,7 @@ public class MorseController implements Initializable {
         tip.stopTimer();
         check.stopTimer();
         check.updateTimer();
+        stats.timesTyped++;
 
         if(tipPane.isVisible() == false)
             tip.updateTimer();
@@ -132,12 +139,17 @@ public class MorseController implements Initializable {
         //Well, you can think that, this is not necessary, but when i press the return
         //button, the settings rebbot, so i have to send the values again
         MainController mainCt = loader.getController();
-        mainCt.setValues(settings);
+        mainCt.setValues(settings, stats);
 
         Stage mainView = (Stage) returnButton.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
         mainView.setScene(scene);
+    }
+
+    @FXML
+    void prefWordEvent(ActionEvent event) {
+        stats.preferWord = textLabel;
     }
 
     public void runWords() {
@@ -177,6 +189,7 @@ public class MorseController implements Initializable {
 
         letter = ""+textLabel.charAt(i);
         morse = morseLanguage.translate(letter);
+        stats.lettersTyped++;
 
         if(morse.equals(morseText.getText())){
             try{
@@ -188,6 +201,7 @@ public class MorseController implements Initializable {
                 morseLanguage.setCounterLetters(++i);
                 i = morseLanguage.getCounterLetters();
                 letter = ""+textLabel.charAt(i);
+                stats.correctLetters++;
 
                 //When the transition stop, change letter 
                 doScaleTransition(letterLabel);  
@@ -201,11 +215,14 @@ public class MorseController implements Initializable {
             }catch(Exception e){
                 //if(morseLanguage.getCounterLetters() > textLabel.length());
                 System.out.println("Correct Word");                
+                stats.correctWords++;
+                stats.wordsTyped++;
                 runWords();
             }
         }
         else{
             System.out.println(""+morseText.getText()+" is not: "+morse+"  Try again");  
+            stats.incorrectLetters++;
             morseText.clear();
         } 
     }
@@ -281,6 +298,7 @@ public class MorseController implements Initializable {
         transition.setNode(tipPane);
 
         System.out.println("Hi this works");
+        stats.tipsShowed++;
 
         if(tipPane.isVisible()){
             transition.setFromX(0);

@@ -29,16 +29,16 @@ public class StatsController implements Initializable{
     @FXML private CategoryAxis lineX;
     @FXML private NumberAxis lineY;
     @FXML private PieChart pieChart;
-    @FXML private Label timePracticing;
     @FXML private Label tipsShowed;
+    @FXML private Label tipsShowed2;
     @FXML private Label correctLetters;
-    @FXML private Label letterMostTyped;
-    @FXML private Label preferWord;
     @FXML private Label correctWords;
-    @FXML private Label incorrectWords;
+    @FXML private Label incorrectLetters;
+    @FXML private Label preferWord;
     @FXML private Label timesTyped;
     @FXML private Label wordsTyped;
     @FXML private Label lettersTyped;
+    Stats stats;
     Settings settings;
 
     @Override
@@ -46,9 +46,21 @@ public class StatsController implements Initializable{
         
     }
     
-    public void setValues(Settings settings){
+    public void setValues(Settings settings, Stats stats){
         this.settings = settings;
+        this.stats = stats;
+
         generalPane.setOpacity(settings.getBrightness());
+
+        tipsShowed.setText(""+stats.tipsShowed);
+        tipsShowed2.setText(""+stats.tipsShowed);
+        correctLetters.setText(""+stats.correctLetters);
+        correctWords.setText(""+stats.correctWords);
+        incorrectLetters.setText(""+stats.incorrectLetters);
+        preferWord.setText(stats.preferWord);
+        timesTyped.setText(""+stats.timesTyped);
+        wordsTyped.setText(""+stats.wordsTyped);
+        lettersTyped.setText(""+stats.lettersTyped);
     }
 
     @FXML
@@ -57,7 +69,7 @@ public class StatsController implements Initializable{
         Parent root = loader.load();
 
         MainController mainCt = loader.getController();
-        mainCt.setValues(settings);
+        mainCt.setValues(settings, stats);
 
         Stage mainView = (Stage) backBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);

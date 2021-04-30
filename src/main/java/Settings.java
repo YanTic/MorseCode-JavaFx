@@ -1,8 +1,8 @@
 package main.java;
 
 public class Settings {
-    boolean music, musicEffects, doAssistance;
-    double brightness;
+    private boolean music, musicEffects, doAssistance;
+    private double brightness;
 
     public Settings(){
         music = true; 

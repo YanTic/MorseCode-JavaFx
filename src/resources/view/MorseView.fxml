@@ -46,6 +46,7 @@
                </children>
             </AnchorPane>
             <ProgressBar fx:id="line" layoutX="471.0" layoutY="105.0" prefHeight="6.0" prefWidth="300.0" progress="0" style="-fx-accent: #19b263;" />
+            <JFXButton fx:id="prefWordBtt" layoutX="458.0" layoutY="13.0" onAction="#prefWordEvent" text="I like this word man" />
          </children>
       </AnchorPane>
    </children>
