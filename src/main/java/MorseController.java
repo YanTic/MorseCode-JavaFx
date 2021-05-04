@@ -57,8 +57,8 @@ public class MorseController implements Initializable {
     Tip<Object> tip;
     Check<Object> check;
     Settings settings;
-    Stats stats;
     boolean music, musicEffects, doAssistance;
+    Stats stats;
 
 /* If use extends Thread: Process1 thread1 = new Procces1();
    If use implements Runnable: Thread thread2 = new Thread(new Process2()) */
@@ -202,6 +202,7 @@ public class MorseController implements Initializable {
                 i = morseLanguage.getCounterLetters();
                 letter = ""+textLabel.charAt(i);
                 stats.correctLetters++;
+                stats.corLtByWord++;
 
                 //When the transition stop, change letter 
                 doScaleTransition(letterLabel);  
@@ -217,12 +218,22 @@ public class MorseController implements Initializable {
                 System.out.println("Correct Word");                
                 stats.correctWords++;
                 stats.wordsTyped++;
+
+                stats.correctLettersByWord.add(stats.corLtByWord);
+                stats.incorrectLettersByWord.add(stats.incorLtByWord);
+                stats.tipsByWord.add(stats.tipByWord);
+
+                stats.corLtByWord = 1;
+                stats.incorLtByWord = 0;
+                stats.tipByWord = 0;
+
                 runWords();
             }
         }
         else{
             System.out.println(""+morseText.getText()+" is not: "+morse+"  Try again");  
             stats.incorrectLetters++;
+            stats.incorLtByWord++;
             morseText.clear();
         } 
     }
@@ -299,6 +310,7 @@ public class MorseController implements Initializable {
 
         System.out.println("Hi this works");
         stats.tipsShowed++;
+        stats.tipByWord++;
 
         if(tipPane.isVisible()){
             transition.setFromX(0);
