@@ -20,71 +20,58 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d1e1e" height="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
       <AnchorPane fx:id="generalPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFBC69;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="356.0" layoutX="39.0" layoutY="217.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="394.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="375.0" layoutX="30.0" layoutY="204.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="440.0" />
             <JFXButton fx:id="backBtt" onAction="#backEvent" text="Back" />
-            <Label layoutX="53.0" layoutY="215.0" prefHeight="39.0" prefWidth="130.0" text="Letters">
-               <font>
-                  <Font name="System Bold" size="28.0" />
-               </font>
-            </Label>
-            <LineChart fx:id="lineChart" layoutX="37.0" layoutY="262.0" prefHeight="246.0" prefWidth="371.0">
-              <xAxis>
-                <CategoryAxis fx:id="lineX" side="BOTTOM" />
-              </xAxis>
-              <yAxis>
-                <NumberAxis fx:id="lineY" side="LEFT" />
-              </yAxis>
-            </LineChart>
-            <HBox alignment="CENTER_LEFT" layoutX="94.0" layoutY="490.0" prefHeight="55.0" prefWidth="298.0">
+            <HBox alignment="CENTER_LEFT" layoutX="53.0" layoutY="516.0" prefHeight="51.0" prefWidth="238.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="78.0" prefWidth="76.0" style="-fx-background-color: orange;">
+                  <VBox alignment="TOP_CENTER" prefHeight="67.0" prefWidth="45.0" style="-fx-background-color: orange;">
                      <children>
                         <Label fx:id="correctLetters" text="110">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="16.0" />
                            </font>
                         </Label>
                         <Label fx:id="incorrectLetters" text="0">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
                         <Label fx:id="tipsShowed2" text="0">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="15.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="CENTER_LEFT" prefHeight="84.0" prefWidth="253.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="90.0" prefWidth="161.0">
                      <children>
-                        <Label text="Correct Letters">
+                        <Label text="Total Correct Letters">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Incorrect Letters">
+                        <Label text="Total Incorrect Letters">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="15.0" />
                            </font>
                         </Label>
-                        <Label text="Tips Showed">
+                        <Label text="Total Tips Showed">
                            <font>
-                              <Font size="20.0" />
+                              <Font size="15.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="358.0" layoutX="497.0" layoutY="216.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="248.0" />
-            <Label layoutX="506.0" layoutY="214.0" prefHeight="39.0" prefWidth="130.0" text="Typing">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="375.0" layoutX="512.0" layoutY="204.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="255.0" />
+            <Label layoutX="518.0" layoutY="196.0" prefHeight="39.0" prefWidth="130.0" text="Typing">
                <font>
                   <Font name="System Bold" size="28.0" />
                </font>
             </Label>
-            <PieChart fx:id="pieChart" layoutX="509.0" layoutY="261.0" prefHeight="178.0" prefWidth="226.0" style="-fx-background-color: grey;" />
-            <HBox layoutX="496.0" layoutY="459.0" prefHeight="90.0" prefWidth="250.0">
+            <PieChart fx:id="pieChart" layoutX="517.0" layoutY="244.0" prefHeight="198.0" prefWidth="250.0" style="-fx-background-color: grey;" />
+            <HBox layoutX="515.0" layoutY="459.0" prefHeight="90.0" prefWidth="250.0">
                <children>
                   <VBox alignment="TOP_CENTER" prefHeight="90.0" prefWidth="63.0" style="-fx-background-color: orange;">
                      <children>
@@ -126,7 +113,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="145.0" layoutX="40.0" layoutY="26.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="708.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="145.0" layoutX="30.0" layoutY="26.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="740.0" />
             <ImageView fitHeight="113.0" fitWidth="135.0" layoutX="57.0" layoutY="37.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../MAS%20ALLA%20DEL%20BOSQUE%20EPISODIO%206.PNG" />
@@ -137,12 +124,12 @@
                   <Font name="System Bold" size="32.0" />
                </font>
             </Label>
-            <Label layoutX="442.0" layoutY="150.0" text="Prefer Word">
+            <Label layoutX="451.0" layoutY="150.0" text="Prefer Word">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="preferWord" layoutX="441.0" layoutY="117.0" prefHeight="39.0" prefWidth="298.0" text="LightningMcQueen" textAlignment="CENTER">
+            <Label fx:id="preferWord" layoutX="450.0" layoutY="117.0" prefHeight="39.0" prefWidth="298.0" text="LightningMcQueen" textAlignment="CENTER">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
@@ -152,34 +139,48 @@
                   <Font size="17.0" />
                </font>
             </Label>
-            <Label fx:id="correctWords" layoutX="438.0" layoutY="33.0" prefHeight="51.0" prefWidth="83.0" text="0">
+            <Label fx:id="correctWords" layoutX="447.0" layoutY="33.0" prefHeight="51.0" prefWidth="83.0" text="0">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-            <Label layoutX="437.0" layoutY="75.0" text="Correct Words">
+            <Label layoutX="446.0" layoutY="75.0" text="Correct Words">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label layoutX="553.0" layoutY="33.0" text="0">
+            <Label layoutX="562.0" layoutY="33.0" text="0">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-            <Label layoutX="551.0" layoutY="75.0" text="Letters Learned" wrapText="true">
+            <Label layoutX="560.0" layoutY="75.0" text="Letters Learned" wrapText="true">
                <font>
                   <Font size="13.0" />
                </font>
             </Label>
-            <Label fx:id="tipsShowed" layoutX="673.0" layoutY="33.0" text="0">
+            <Label fx:id="tipsShowed" layoutX="682.0" layoutY="33.0" text="0">
                <font>
                   <Font name="System Bold" size="35.0" />
                </font>
             </Label>
-            <Label layoutX="671.0" layoutY="75.0" text="Tips Showed" wrapText="true">
+            <Label layoutX="680.0" layoutY="75.0" text="Tips Showed" wrapText="true">
                <font>
                   <Font size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="397.0" layoutY="481.0" text="*Every word" />
+            <LineChart fx:id="lineChart" layoutX="18.0" layoutY="221.0" prefHeight="278.0" prefWidth="463.0">
+              <xAxis>
+                <CategoryAxis prefHeight="19.0" prefWidth="405.0" side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </LineChart>
+            <Label alignment="CENTER" layoutX="19.0" layoutY="196.0" prefHeight="0.0" prefWidth="179.0" text="Letters" textAlignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="28.0" />
                </font>
             </Label>
          </children>
