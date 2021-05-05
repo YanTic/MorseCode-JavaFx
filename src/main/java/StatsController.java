@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,6 +46,7 @@ public class StatsController implements Initializable{
 //        @SuppressWarnings("rawtypes")
         Platform.runLater(()->{
             setLineChartValues();
+            setPieChartValues();
         });
         /* XYChart.Series series = new XYChart.Series<>();
 
@@ -125,6 +128,16 @@ public class StatsController implements Initializable{
 //        series.getData().add(new XYChart.Data("3", 13));
   
         lineChart.getData().addAll(corLettByWord, incorLettByWord, tipsByWord);
+    }
+
+    public void setPieChartValues(){
+        ObservableList<PieChart.Data> pieChartData = 
+            FXCollections.observableArrayList(
+                new PieChart.Data("Times Typed", stats.timesTyped),
+                new PieChart.Data("Words Types", stats.wordsTyped),
+                new PieChart.Data("Letters Typed", stats.lettersTyped)
+            );
+        pieChart.setData(pieChartData);
     }
 
     @FXML
