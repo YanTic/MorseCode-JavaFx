@@ -19,46 +19,70 @@ import javafx.scene.chart.LineChart;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
 public class StatsController implements Initializable{
     @FXML private StackPane stackPane;
     @FXML private AnchorPane generalPane;
+    @FXML private AnchorPane pieChartPane;
+    @FXML private AnchorPane lineChartPane;
     @FXML private JFXButton backBtt;
-    @FXML private LineChart<String, Number> lineChart;
-    @FXML private PieChart pieChart;
-    @FXML private Label tipsShowed;
-    @FXML private Label tipsShowed2;
     @FXML private Label correctLetters;
-    @FXML private Label correctWords;
     @FXML private Label incorrectLetters;
-    @FXML private Label preferWord;
+    @FXML private Label tipsShowed2;
     @FXML private Label timesTyped;
     @FXML private Label wordsTyped;
     @FXML private Label lettersTyped;
+    @FXML private Label preferWord;
+    @FXML private Label correctWords;
+    @FXML private Label tipsShowed;
+    @FXML private PieChart pieChart;
+    @FXML private LineChart<String, Number> lineChart; 
+    @FXML private Rectangle lettersShapeButton;
+    @FXML private Rectangle typingShapeButton;
     Stats stats;
     Settings settings;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-//        @SuppressWarnings("rawtypes")
-        Platform.runLater(()->{
+/*         Platform.runLater(()->{
             setLineChartValues();
             setPieChartValues();
-        });
-        /* XYChart.Series series = new XYChart.Series<>();
-
-        
-        series.getData().add(new XYChart.Data("1", 23));
-        series.getData().add(new XYChart.Data("3", 13));
-        series.getData().add(new XYChart.Data("4", 43));
-        series.getData().add(new XYChart.Data("5", 33));
-
-        lineChart.getData().addAll(series); */
+        }); */        
     }
-    
+
+    @FXML
+    void showLineChart(MouseEvent event) {
+        pieChartPane.setVisible(false);
+        lineChartPane.setVisible(true);
+        setLineChartValues();
+    }
+
+    @FXML
+    void showPieChart(MouseEvent event) {
+        lineChartPane.setVisible(false);
+        pieChartPane.setVisible(true);
+        setPieChartValues();
+    }
+
+    @FXML
+    void backEvent(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
+        Parent root = loader.load();
+
+        MainController mainCt = loader.getController();
+        mainCt.setValues(settings, stats);
+
+        Stage mainView = (Stage) backBtt.getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
+        mainView.setScene(scene);
+    }
+
     public void setValues(Settings settings, Stats stats){
         this.settings = settings;
         this.stats = stats;
@@ -77,36 +101,27 @@ public class StatsController implements Initializable{
     }
 
     public void setLineChartValues(){
+        //@SuppressWarnings("rawtypes")
         //For each = for(Integer i: stats.correctLettersByWord)
-        //      Real        Wrong
-        //tip : 2, 1, 2 |  4, 2, 4
-        //cor : 4, 4, 5 |  3, 3, 4
-        //inc : 2, 2, 3 |  3, 2, 3
-
+        lineChart.getData().clear();
 
         XYChart.Series<String, Number> corLettByWord = new XYChart.Series<>();
-        corLettByWord.setName("CorLt");
-         for(int i=0; i<stats.correctLettersByWord.size(); i++){
-            System.out.println(""+i +" "+ stats.correctLettersByWord.get(i));
+        corLettByWord.setName("Correct Letters");
+        for(int i=0; i<stats.correctLettersByWord.size(); i++){
             corLettByWord.getData().add(new XYChart.Data<>(""+i, stats.correctLettersByWord.get(i)));
         } 
-        System.out.println("\n");
 
         XYChart.Series<String, Number> incorLettByWord = new XYChart.Series<>();
-        incorLettByWord.setName("IncLt");
-        for(int i=0; i<stats.incorrectLettersByWord.size(); i++){
-            System.out.println(""+i +" "+ stats.incorrectLettersByWord.get(i));
+        incorLettByWord.setName("Incorrect Letters");
+        for(int i=0; i<stats.incorrectLettersByWord.size(); i++){          
             incorLettByWord.getData().add(new XYChart.Data<>(""+i, stats.incorrectLettersByWord.get(i)));
         }
-        System.out.println("\n");
 
         XYChart.Series<String, Number> tipsByWord = new XYChart.Series<>();
-        tipsByWord.setName("Tip");
-        for(int i=0; i<stats.tipsByWord.size(); i++){
-            System.out.println(""+i +" "+ stats.tipsByWord.get(i));
+        tipsByWord.setName("Tips");
+        for(int i=0; i<stats.tipsByWord.size(); i++){         
             tipsByWord.getData().add(new XYChart.Data<>(""+i, stats.tipsByWord.get(i)));
         } 
-
 
         //FOR TESTES
 /*        XYChart.Series<String, Number> corLettByWord = new XYChart.Series<String, Number>();
@@ -138,19 +153,5 @@ public class StatsController implements Initializable{
                 new PieChart.Data("Letters Typed", stats.lettersTyped)
             );
         pieChart.setData(pieChartData);
-    }
-
-    @FXML
-    void backEvent(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
-        Parent root = loader.load();
-
-        MainController mainCt = loader.getController();
-        mainCt.setValues(settings, stats);
-
-        Stage mainView = (Stage) backBtt.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
-        mainView.setScene(scene);
     }
 }
