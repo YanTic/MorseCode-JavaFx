@@ -304,30 +304,32 @@ public class MorseController implements Initializable {
     }
 
     public void showTip(){
-        TranslateTransition transition = new TranslateTransition();
-        transition.setDuration(Duration.seconds(1.5));
-        transition.setNode(tipPane);
-
-        System.out.println("Hi this works");
-        stats.tipsShowed++;
-        stats.tipByWord++;
-
-        if(tipPane.isVisible()){
-            transition.setFromX(0);
-            transition.setToX(-tipPane.getPrefWidth());
-            transition.play();
-
-            transition.setOnFinished(evnt ->{
-                tipPane.setVisible(false);
-            });
-        }
-        else{   
-            Image image = new Image("resources/images/Tips/"+letter+".jpg");
-            tipImage.setImage(image);         
-            transition.setFromX(-tipPane.getPrefWidth());
-            transition.setToX(0);
-            transition.play();
-            tipPane.setVisible(true);
+        if(settings.getDoAssistance()){
+            TranslateTransition transition = new TranslateTransition();
+            transition.setDuration(Duration.seconds(1.5));
+            transition.setNode(tipPane);
+    
+            System.out.println("Hi this works");
+            stats.tipsShowed++;
+            stats.tipByWord++;
+    
+            if(tipPane.isVisible()){
+                transition.setFromX(0);
+                transition.setToX(-tipPane.getPrefWidth());
+                transition.play();
+    
+                transition.setOnFinished(evnt ->{
+                    tipPane.setVisible(false);
+                });
+            }
+            else{   
+                Image image = new Image("resources/images/Tips/"+letter+".jpg");
+                tipImage.setImage(image);         
+                transition.setFromX(-tipPane.getPrefWidth());
+                transition.setToX(0);
+                transition.play();
+                tipPane.setVisible(true);
+            }
         }
     }
 
