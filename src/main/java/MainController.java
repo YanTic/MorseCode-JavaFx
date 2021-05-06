@@ -173,8 +173,16 @@ public class MainController implements Initializable{
     }
 
     @FXML
-    void tutorialEvent(ActionEvent event) {
+    void tutorialEvent(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/TutorialView.fxml"));
+        Parent root = loader.load();
 
+        TutorialController tutoCt = loader.getController();
+        tutoCt.setValues(settings, stats);
+        
+        Stage tutorialView = (Stage) tutorialBtt.getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        tutorialView.setScene(scene);
     }
 
 }
