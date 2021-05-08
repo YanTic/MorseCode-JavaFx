@@ -7,14 +7,14 @@ public class Stats {
     protected int tipsShowed, correctLetters, correctWords, incorrectLetters;
     protected int wordsTyped, lettersTyped, timesTyped;
     protected int corLtByWord, incorLtByWord, tipByWord;
-    protected char letterMostTyped;
+//    protected char letterMostTyped;
     protected ArrayList<Integer> correctLettersByWord;
     protected ArrayList<Integer> incorrectLettersByWord;
     protected ArrayList<Integer> tipsByWord;
     
     public Stats(){
         preferWord = "";
-        letterMostTyped = 'a';
+//        letterMostTyped = 'a';
         tipsShowed = correctLetters = correctWords = incorrectLetters = 0; 
         timesTyped = wordsTyped = lettersTyped = 0;
         incorLtByWord = tipByWord = 0;

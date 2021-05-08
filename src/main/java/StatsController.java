@@ -49,10 +49,9 @@ public class StatsController implements Initializable{
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-/*         Platform.runLater(()->{
+        Platform.runLater(()->{
             setLineChartValues();
-            setPieChartValues();
-        }); */        
+        });         
     }
 
     @FXML
