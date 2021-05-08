@@ -16,15 +16,29 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d1e1e" height="600.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <AnchorPane fx:id="morsePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleOnKeyPressed" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#008f7a" height="120.0" layoutY="270.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e75a64" height="120.0" layoutY="270.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
             <TextField fx:id="morseText" alignment="CENTER" editable="false" layoutY="59.0" prefHeight="231.0" prefWidth="800.0" stylesheets="@../styles/MorseView.css" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1fff61" height="140.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#19b263" height="219.0" layoutY="381.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e75a64" height="140.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f9dfe4" height="219.0" layoutY="381.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
             <Label fx:id="wordLabel" layoutX="458.0" layoutY="35.0" text="w o r d" />
             <Label fx:id="letterLabel" layoutX="324.0" layoutY="25.0" text="W" />
-            <JFXButton fx:id="dotButton" buttonType="RAISED" layoutX="185.0" layoutY="430.0" onAction="#dotEvent" prefHeight="93.0" prefWidth="192.0" ripplerFill="#c97373" style="-fx-background-radius: 5; -fx-background-color: #c97373;" stylesheets="@../styles/MorseView.css" />
-            <JFXButton fx:id="dashButton" buttonType="RAISED" layoutX="450.0" layoutY="430.0" onAction="#dashEvent" prefHeight="93.0" prefWidth="192.0" ripplerFill="#c77373" style="-fx-background-radius: 5; -fx-background-color: #c97373;" stylesheets="@../styles/MorseView.css" />
-            <JFXButton fx:id="returnButton" layoutX="25.0" layoutY="541.0" onAction="#returnBttEvent" text="Return" />
+            <JFXButton fx:id="dotButton" alignment="CENTER" buttonType="RAISED" layoutX="185.0" layoutY="430.0" onAction="#dotEvent" prefHeight="93.0" prefWidth="192.0" ripplerFill="WHITE" style="-fx-background-radius: 5; -fx-background-color: #ffffff;" stylesheets="@../styles/MorseView.css" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="38.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/dot.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="dashButton" alignment="CENTER" buttonType="RAISED" layoutX="450.0" layoutY="430.0" onAction="#dashEvent" prefHeight="93.0" prefWidth="192.0" ripplerFill="#c77373" style="-fx-background-radius: 5; -fx-background-color: #ffffff;" stylesheets="@../styles/MorseView.css" textAlignment="CENTER">
+               <graphic>
+                  <ImageView fitHeight="77.0" fitWidth="93.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/dash.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
+            <JFXButton fx:id="returnButton" layoutX="18.0" layoutY="546.0" onAction="#returnBttEvent" />
             <JFXButton fx:id="helpButton" layoutX="735.0" layoutY="538.0" onAction="#helpBttEvent" stylesheets="@../styles/MorseView.css" />
             <ScrollPane fx:id="helpScrollPane" hbarPolicy="NEVER" layoutX="204.0" layoutY="65.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pannable="true" prefHeight="490.0" prefWidth="400.0" visible="false">
                <content>
@@ -46,7 +60,14 @@
                </children>
             </AnchorPane>
             <ProgressBar fx:id="line" layoutX="471.0" layoutY="105.0" prefHeight="6.0" prefWidth="300.0" progress="0" style="-fx-accent: #19b263;" />
-            <JFXButton fx:id="prefWordBtt" layoutX="458.0" layoutY="13.0" onAction="#prefWordEvent" text="I like this word man" />
+            <JFXButton fx:id="prefWordBtt" layoutX="458.0" layoutY="13.0" onAction="#prefWordEvent" text="I like this word man">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/starBorder.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
          </children>
       </AnchorPane>
    </children>

@@ -18,14 +18,14 @@
 <StackPane fx:id="stackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.java.StatsController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d1e1e" height="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
-      <AnchorPane fx:id="generalPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #FFBC69;">
+      <AnchorPane fx:id="generalPane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #79AFFF;">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="120.0" layoutX="35.0" layoutY="203.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="180.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="120.0" layoutX="35.0" layoutY="358.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="180.0" />
-            <JFXButton fx:id="backBtt" layoutX="22.0" layoutY="556.0" onAction="#backEvent" text="Back" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#538dd0" height="120.0" layoutX="35.0" layoutY="203.0" stroke="#538dd0" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="180.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#538dd0" height="120.0" layoutX="35.0" layoutY="358.0" stroke="#538dd0" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="180.0" />
+            <JFXButton fx:id="backBtt" layoutX="22.0" layoutY="556.0" onAction="#backEvent" style="-fx-background-color: #538dd0;" text="Back" />
             <HBox alignment="CENTER_LEFT" layoutX="30.0" layoutY="245.0" prefHeight="67.0" prefWidth="212.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="67.0" prefWidth="45.0" style="-fx-background-color: orange;">
+                  <VBox alignment="TOP_CENTER" prefHeight="67.0" prefWidth="45.0">
                      <children>
                         <Label fx:id="correctLetters" text="110">
                            <font>
@@ -72,7 +72,7 @@
             </Label>
             <HBox layoutX="33.0" layoutY="397.0" prefHeight="67.0" prefWidth="190.0">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="67.0" prefWidth="50.0" style="-fx-background-color: orange;">
+                  <VBox alignment="TOP_CENTER" prefHeight="67.0" prefWidth="50.0">
                      <children>
                         <Label fx:id="timesTyped" text="2000">
                            <font>
@@ -112,10 +112,10 @@
                   </VBox>
                </children>
             </HBox>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="125.0" layoutX="30.0" layoutY="23.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="740.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#538dd0" height="125.0" layoutX="30.0" layoutY="23.0" stroke="#538dd0" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="740.0" />
             <ImageView fitHeight="113.0" fitWidth="135.0" layoutX="57.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../MAS%20ALLA%20DEL%20BOSQUE%20EPISODIO%206.PNG" />
+                  <Image url="@../images/student.png" />
                </image>
             </ImageView>
             <Label layoutX="209.0" layoutY="13.0" prefHeight="39.0" prefWidth="169.0" text="Student">
@@ -173,17 +173,17 @@
                   <Font name="System Bold" size="28.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ebab2a" height="390.0" layoutX="250.0" layoutY="182.0" stroke="#ebab2a" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="520.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#538dd0" height="390.0" layoutX="250.0" layoutY="182.0" stroke="#538dd0" strokeLineCap="ROUND" strokeMiterLimit="50.0" strokeWidth="23.0" width="520.0" />
             <AnchorPane fx:id="pieChartPane" layoutX="239.0" layoutY="171.0" prefHeight="413.0" prefWidth="543.0" visible="false">
                <children>
-                  <PieChart fx:id="pieChart" prefHeight="413.0" prefWidth="543.0" style="-fx-background-color: grey;" />
+                  <PieChart fx:id="pieChart" prefHeight="413.0" prefWidth="543.0" style="-fx-background-color: transparent;" />
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="lineChartPane" layoutX="239.0" layoutY="171.0" prefHeight="413.0" prefWidth="543.0" visible="false">
+            <AnchorPane fx:id="lineChartPane" layoutX="239.0" layoutY="171.0" prefHeight="413.0" prefWidth="543.0">
                <children>
-                  <LineChart fx:id="lineChart" prefHeight="386.0" prefWidth="543.0">
+                  <LineChart fx:id="lineChart" prefHeight="386.0" prefWidth="543.0" style="-fx-background-color: transparent;">
                     <xAxis>
-                      <CategoryAxis prefHeight="19.0" prefWidth="405.0" side="BOTTOM" />
+                      <CategoryAxis prefHeight="19.0" prefWidth="405.0" side="BOTTOM" tickLabelsVisible="false" />
                     </xAxis>
                     <yAxis>
                       <NumberAxis side="LEFT" />

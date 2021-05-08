@@ -8,6 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -17,14 +18,26 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d1e1e" height="600.0" stroke="TRANSPARENT" strokeType="INSIDE" width="800.0" />
       <AnchorPane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" stylesheets="@../styles/Main.css">
          <children>
-            <Label fx:id="morseLabel" layoutX="66.0" layoutY="46.0" stylesheets="@../styles/Main.css" text="Morse Desktop" />
-            <JFXButton fx:id="githubButton" buttonType="RAISED" layoutX="36.0" layoutY="518.0" onAction="#githubEvent" prefHeight="64.0" prefWidth="64.0" stylesheets="@../styles/Main.css" />
-            <JFXButton fx:id="settingsButton" buttonType="RAISED" layoutX="688.0" layoutY="518.0" onAction="#SettingsAction" prefHeight="64.0" prefWidth="64.0" stylesheets="@../styles/Main.css" />
-            <JFXButton fx:id="flagButton" buttonType="RAISED" layoutX="692.0" layoutY="434.0" onAction="#errorEvent" prefHeight="64.0" prefWidth="64.0" stylesheets="@../styles/Main.css" />
-            <JFXButton fx:id="menuBtt" buttonType="RAISED" layoutX="295.0" layoutY="195.0" onAction="#menuEvent" prefHeight="200.0" prefWidth="200.0" />
+            <Label fx:id="morseLabel" layoutX="130.0" layoutY="48.0" styleClass="shadow" stylesheets="@../styles/Main.css" text="Morse Code" textFill="#374955" />
+            <Label layoutX="141.0" layoutY="413.0" prefHeight="107.0" prefWidth="521.0" styleClass="shadow" stylesheets="@../styles/Main.css" text="-- --- .-. ... .    -.-. --- -.. ." textAlignment="CENTER" textFill="#374955">
+               <font>
+                  <Font name="System Bold" size="47.0" />
+               </font>
+            </Label>
+            <JFXButton fx:id="githubButton" buttonType="RAISED" layoutX="36.0" layoutY="518.0" onAction="#githubEvent" prefHeight="64.0" prefWidth="64.0" styleClass="shadow" stylesheets="@../styles/Main.css" />
+            <JFXButton fx:id="settingsButton" buttonType="RAISED" layoutX="688.0" layoutY="518.0" onAction="#SettingsAction" prefHeight="64.0" prefWidth="64.0" styleClass="shadow" stylesheets="@../styles/Main.css" />
+            <JFXButton fx:id="flagButton" buttonType="RAISED" layoutX="692.0" layoutY="434.0" onAction="#errorEvent" prefHeight="64.0" prefWidth="64.0" styleClass="shadow" stylesheets="@../styles/Main.css" />
+            <JFXButton fx:id="menuBtt" buttonType="RAISED" layoutX="298.0" layoutY="196.0" onAction="#menuEvent" prefHeight="200.0" prefWidth="200.0">
+               <graphic>
+                  <ImageView fitHeight="205.0" fitWidth="341.0" pickOnBounds="true" preserveRatio="true" styleClass="shadow">
+                     <image>
+                        <Image url="@../images/morseMachine.png" />
+                     </image>
+                  </ImageView>
+               </graphic></JFXButton>
             <AnchorPane fx:id="githubPane" layoutY="405.0" prefHeight="64.0" prefWidth="359.0" visible="false">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#86bc9a" height="89.0" layoutX="-3.0" layoutY="7.0" stroke="#86bc9a" strokeLineCap="ROUND" strokeWidth="25.0" style="-fx-stroke-line-cap: round;" width="355.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f07b3f" height="89.0" layoutX="-3.0" layoutY="7.0" stroke="#f07b3f" strokeLineCap="ROUND" strokeWidth="25.0" style="-fx-stroke-line-cap: round;" width="355.0" />
                   <Circle fill="WHITE" layoutX="296.0" layoutY="52.0" radius="40.0" stroke="TRANSPARENT" strokeType="INSIDE" />
                   <ImageView fx:id="gifGithub" fitHeight="57.0" fitWidth="58.0" layoutX="267.0" layoutY="23.0" onMouseClicked="#githubPage" opacity="0.8" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -34,7 +47,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </ImageView>
-                  <Label layoutX="28.0" layoutY="38.0" text="https://github.com/YanTic">
+                  <Label layoutX="28.0" layoutY="38.0" text="https://github.com/YanTic" textFill="#19212c">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -43,7 +56,7 @@
             </AnchorPane>
             <AnchorPane fx:id="flagPane" layoutX="580.0" layoutY="330.0" opacity="0.85" prefHeight="80.0" prefWidth="220.0" visible="false">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#64d12a" height="80.0" layoutY="5.0" stroke="#64cf2b" strokeLineCap="ROUND" strokeMiterLimit="5.0" strokeWidth="20.0" width="220.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ea5455" height="80.0" layoutY="5.0" stroke="#ea5455" strokeLineCap="ROUND" strokeMiterLimit="5.0" strokeWidth="20.0" width="220.0" />
                   <Label layoutX="19.0" layoutY="18.0" prefHeight="70.0" prefWidth="182.0" text="If you would like to contribute to this little proyect, create a pull request on the repository, you must" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                      <font>
                         <Font size="11.0" />
@@ -58,8 +71,8 @@
             </AnchorPane>
             <AnchorPane fx:id="menuPane" prefHeight="600.0" prefWidth="308.0" visible="false">
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1d3340" height="570.0" layoutX="-6.0" layoutY="15.0" stroke="#1d3340" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="15.0" width="315.0" />
-                  <JFXButton fx:id="exitBtt" layoutX="265.0" layoutY="9.0" onAction="#menuExitEvent">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1dcc54" height="570.0" layoutX="-6.0" layoutY="15.0" stroke="#1bcd56" strokeLineCap="ROUND" strokeType="OUTSIDE" strokeWidth="15.0" width="315.0" />
+                  <JFXButton fx:id="exitBtt" layoutX="265.0" layoutY="9.0" minWidth="45.0" onAction="#menuExitEvent" prefHeight="38.0" prefWidth="37.0">
                      <graphic>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -67,29 +80,47 @@
                            </image>
                         </ImageView>
                      </graphic></JFXButton>
-                  <JFXButton fx:id="playBtt" alignment="BASELINE_LEFT" layoutY="128.0" onAction="#playEvent" prefHeight="64.0" prefWidth="324.0" ripplerFill="#305161" text="Play" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font>
-                  </JFXButton>
-                  <JFXButton fx:id="statsBtt" alignment="BASELINE_LEFT" layoutY="215.0" onAction="#statsEvent" prefHeight="64.0" prefWidth="324.0" ripplerFill="#305161" text="Stats" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></JFXButton>
-                  <JFXButton fx:id="tutorialBtt" alignment="BASELINE_LEFT" layoutY="303.0" mnemonicParsing="false" onAction="#tutorialEvent" prefHeight="64.0" prefWidth="324.0" ripplerFill="#305161" style="-jfx-disable-visual-focus: true;" text="Tutorial" textFill="WHITE">
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                     <font>
-                        <Font name="System Bold" size="18.0" />
-                     </font></JFXButton>
                   <Button fx:id="dontPush" layoutX="14.0" layoutY="554.0" mnemonicParsing="false" onAction="#dontPushBttEvent" text="Don't push" />
+                  <VBox layoutY="128.0" prefHeight="258.0" prefWidth="324.0" spacing="15.0">
+                     <children>
+                        <JFXButton fx:id="playBtt" alignment="BASELINE_LEFT" ellipsisString="" onAction="#playEvent" prefHeight="64.0" prefWidth="324.0" ripplerFill="#4ef282" text="    Play" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                           <graphic>
+                              <ImageView fitHeight="29.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/play.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </JFXButton>
+                        <JFXButton fx:id="statsBtt" alignment="BASELINE_LEFT" onAction="#statsEvent" prefHeight="64.0" prefWidth="324.0" ripplerFill="#305161" text="    Stats" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="43.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/stats.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="tutorialBtt" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#tutorialEvent" prefHeight="64.0" prefWidth="324.0" ripplerFill="#305161" style="-jfx-disable-visual-focus: true;" text="    Tutorial" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="45.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/learn.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </VBox>
                </children>
             </AnchorPane>
          </children>
