@@ -149,6 +149,7 @@ public class MorseController implements Initializable {
 
     @FXML
     void prefWordEvent(ActionEvent event) {
+//        prefWordBtt.setStyle("-fx-graphic: url(\"resources/images/star.png\");");
         stats.preferWord = textLabel;
     }
 
