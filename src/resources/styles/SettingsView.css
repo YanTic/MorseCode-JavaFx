@@ -1,0 +1,26 @@
+.shadow{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.0, 0.0, 10.0);
+}
+
+#saveButton{
+    -fx-background-color: #8FC86A;
+}
+
+#saveButton:hover{
+    -fx-background-color: #98C87F;
+}
+
+
+#SettingsPane{
+    -fx-background-color: #252428;
+}
+
+#panelUp{
+    -fx-background-color:  #E7DC5A;
+}
+
+#panelDown{
+    -fx-background-color:  #8FC86A;
+}
+
+
