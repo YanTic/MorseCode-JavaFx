@@ -1,25 +1,22 @@
+.shadow{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.0, 0.0, 10.0);
+}
+
+.backgroundBrightness{
+    -fx-background-color:  #1d1e1e;
+}
+
+.buttonMorse{
+    -fx-background-radius: 5;
+    -fx-background-color:  #ffffff;
+}
+
 #stackPane{
     -fx-background-color: #1d1e1e;
 }
 
 #morsePane{
     -fx-background-color: #008F7A;
-}
-
-#dotButton{
-/*    -fx-graphic: url("../images/dot.png"); */
-/*    -fx-background-color: #037a68;
-    -fx-text-alignment: center;
-    -fx-font-size: 50px;
-    -fx-font-weight: BOLD;*/
-}
-
-#dashButton{
-/*    -fx-graphic: url("../images/dash.png");
-    -fx-background-color: #037a68;*/
-/*    -fx-text-alignment: center;
-    -fx-font-size: 50px;
-    -fx-font-weight: BOLD;*/
 }
 
 #returnButton{
@@ -49,6 +46,7 @@
     -fx-font-size: 65px; 
 }
 
-/*#prefWordBtt:hover{
-    -fx-graphic: url("../images/star.png");
-}*/
+#line{
+    -fx-background-color: red;
+    -fx-accent: #e75a64;
+}

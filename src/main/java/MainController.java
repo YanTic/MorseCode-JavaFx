@@ -50,7 +50,8 @@ public class MainController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         stackPane.setOpacity(0);
-        doFadeTransition(stackPane);    
+        doFadeTransition(stackPane);
+        PlaySound.playSounds("src/resources/sounds/Track01.wav");
     }
 
     @FXML
@@ -75,6 +76,7 @@ public class MainController implements Initializable{
         //Show controller
         Stage settingsView = (Stage) settingsButton.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
         settingsView.setScene(scene);
     }
 
@@ -169,6 +171,7 @@ public class MainController implements Initializable{
         
         Stage statsView = (Stage) statsBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/StatsView.css").toExternalForm());
         statsView.setScene(scene);
     }
 

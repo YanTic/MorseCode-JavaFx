@@ -75,6 +75,7 @@ public class SettingsController implements Initializable{
         //Show controller
         Stage mainView = (Stage) exitBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
 
         Timeline timeLine = new Timeline(
             new KeyFrame(

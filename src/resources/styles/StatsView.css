@@ -1,0 +1,35 @@
+.shadow{
+    -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.0, 0.0, 10.0);
+}
+
+.backgroundBrightness{
+    -fx-background-color:  #1d1e1e;
+}
+
+.doTransparent{
+    -fx-background-color:   transparent; 
+}
+
+#generalPane{
+    -fx-background-color:  #79AFFF; 
+}
+
+#backBtt{
+    -fx-background-color:   #538dd0; 
+}
+
+#backBtt:hover{
+    -fx-background-color:  #88A8D0; 
+}
+
+.buttonRectangle{
+    -fx-opacity:  0; 
+}
+
+.buttonRectangle:hover{
+    -fx-opacity:  0.35; 
+}
+
+
+
+
