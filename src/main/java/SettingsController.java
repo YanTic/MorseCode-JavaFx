@@ -15,6 +15,7 @@ import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -42,9 +43,7 @@ public class SettingsController implements Initializable{
     @FXML private Label effectsLb;
     @FXML private Label brightnessLb;
     @FXML private Label informationLb;
-    FXMLLoader loader;
-    Parent root;
-    boolean music, musicEffects, doAssistance;
+    boolean music, musicEffects, doAssistance, saved;
     double brightness;
     Settings settings;
     Stats stats;
@@ -60,19 +59,24 @@ public class SettingsController implements Initializable{
             }
         });
 
+        saved = false;
         show(SettingsPane.getPrefHeight(), 0);
 
-        try {
-            loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
-            root = loader.load();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Platform.runLater(()->{            
+            settings.getMusicBg().stopMediaPlayer();        
+            if(settings.getMusic())
+                settings.getMusicBg().setSongTrack(2);
+        });
     }
 
     @FXML
     void exitEvent(ActionEvent event) throws IOException {
-        //Show controller
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
+        Parent root = loader.load();   
+
+        MainController mainCt = loader.getController();
+        mainCt.setValues(settings, stats);                 
+
         Stage mainView = (Stage) exitBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
@@ -113,10 +117,6 @@ public class SettingsController implements Initializable{
         settings.setBrightness(brightness);
 
         setValues(settings, stats);
-
-        //This sends the class settings to the main controller
-        MainController mainCt = loader.getController();
-        mainCt.setValues(settings, stats);
         
         Alert alert = new Alert(AlertType.INFORMATION);
         alert.setContentText("Settings Saved");

@@ -68,6 +68,12 @@ public class MorseController implements Initializable {
         morseText.setFocusTraversable(false); //When i started the program the handle of the buttons doesn't work
         morseText.setFont(new Font("Open Sans Extranegrita", 180)); //DON'T PIXEL MY DOTS/DASHES
         PlaySound.playSounds("src/resources/sounds/dot.wav");
+
+        Platform.runLater(()->{
+            settings.getMusicBg().stopMediaPlayer();        
+            if(settings.getMusic())
+                settings.getMusicBg().setSongTrack(1);
+        });
         
         System.out.println("Music: "+music + "\nEffects: "+musicEffects + "\nAssistance: "+doAssistance);
 
@@ -83,22 +89,15 @@ public class MorseController implements Initializable {
         this.settings = settings;
         this.stats = stats;
         morsePane.setOpacity(settings.getBrightness());
-        /* this.doAssistance = doAssistance;
-        this.music = music;
-        this.musicEffects = musicEffects; */
     }
 
     @FXML
 	void dotEvent() {
         morseText.setText(morseText.getText() + ".");
 
-/*
-Now i don't have to use ThreadSleep for the program don't plays a sound over other
-It's just stop the previously sound and play another one
+    /* Now i don't have to use ThreadSleep for the program don't plays a sound over other
+    It's just stop the previously sound and play another one */
 
-        try{Thread.sleep(250);}
-        catch(Exception e){} 
-*/
         PlaySound.stopSounds();
         if(settings.getMusicEffects()){
             PlaySound.playSounds("src/resources/sounds/dot.wav");
@@ -126,14 +125,6 @@ It's just stop the previously sound and play another one
     void dashEvent() {
         morseText.setText(morseText.getText() + "-");
         
-//        dashButton;
-        /* try{
-            Thread.sleep(250);
-            if(settings.getMusicEffects())
-                PlaySound.playSounds("src/resources/sounds/dash.wav");
-        }
-        catch(Exception e){} */
-
         PlaySound.stopSounds();
         if(settings.getMusicEffects()){
             PlaySound.playSounds("src/resources/sounds/dash.wav");
