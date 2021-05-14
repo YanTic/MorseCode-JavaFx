@@ -3,12 +3,15 @@ package main.java;
 public class Settings {
     private boolean music, musicEffects, doAssistance;
     private double brightness;
+    private PlaySound musicBg;
 
     public Settings(){
         music = true; 
         musicEffects = true; 
         doAssistance = true;
         brightness = 0.85;
+        musicBg = new PlaySound();
+        musicBg.setBackgroundMusic();
     }
 
     //  Setters
@@ -47,4 +50,7 @@ public class Settings {
         return brightness;
     }
 
+    public PlaySound getMusicBg(){
+        return musicBg;
+    }
 }
