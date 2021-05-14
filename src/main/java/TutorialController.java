@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -25,7 +26,11 @@ public class TutorialController implements Initializable {
     
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        
+        Platform.runLater(()->{
+            settings.getMusicBg().stopMediaPlayer();        
+            if(settings.getMusic())
+                settings.getMusicBg().setSongTrack(4);
+        });
     }
 
     @FXML

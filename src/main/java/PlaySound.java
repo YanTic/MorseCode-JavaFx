@@ -1,10 +1,14 @@
 package main.java;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /*BACKGROUND MUSIC
 
@@ -28,6 +32,12 @@ public class PlaySound {
     private static File musicPath;
     private static Clip clip;
 
+    private Media media;
+	private MediaPlayer mediaPlayer;
+	private File directory;
+	private File[] files;
+	private ArrayList<File> songs;
+	
     public static void playSounds(String soundLocation){
         try{
             musicPath = new File(soundLocation);
@@ -46,6 +56,32 @@ public class PlaySound {
     public static void stopSounds(){
         if(clip != null)
             clip.stop();
+    }
+
+    public void setBackgroundMusic(){
+        songs = new ArrayList<File>();
+		directory = new File("src/resources/sounds/music");
+		files = directory.listFiles();
+		
+		if(files != null) {
+			for(File file : files) {
+				songs.add(file);
+                System.out.println(file);
+			}
+		}
+
+    }
+
+    public void setSongTrack(int songNum){
+        media = new Media(songs.get(songNum).toURI().toString());
+		mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }
+
+    public void stopMediaPlayer(){
+        if(mediaPlayer != null){
+            mediaPlayer.stop();
+        }
     }
 
 }

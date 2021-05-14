@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXButton;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -51,7 +52,25 @@ public class MainController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         stackPane.setOpacity(0);
         doFadeTransition(stackPane);
-        PlaySound.playSounds("src/resources/sounds/Track01.wav");
+
+        Platform.runLater(()->{
+            settings.getMusicBg().stopMediaPlayer();        
+            if(settings.getMusic())
+                settings.getMusicBg().setSongTrack(0);
+        }); 
+
+/*         Platform.runLater(()->{
+            if(settings.getMusic()){
+                PlaySound.stopSounds();
+                PlaySound.playSounds("src/resources/sounds/music/Track01.wav");
+            }
+        }); */
+    }
+
+    public void setValues(Settings settings, Stats stats){
+        this.settings = settings;
+        this.stats = stats;
+        mainPane.setOpacity(settings.getBrightness());
     }
 
     @FXML
@@ -62,28 +81,6 @@ public class MainController implements Initializable{
     @FXML
     void dontPushBttEvent(ActionEvent e){
         PlaySound.playSounds("src/resources/sounds/DontPush.wav");
-    }
-
-    @FXML
-    void SettingsAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/SettingsView.fxml"));
-        Parent root = loader.load();
-
-        //Set Values
-        SettingsController ssCt = loader.getController();
-        ssCt.setValues(settings, stats);
-
-        //Show controller
-        Stage settingsView = (Stage) settingsButton.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
-        settingsView.setScene(scene);
-    }
-
-    public void setValues(Settings settings, Stats stats){
-        this.settings = settings;
-        this.stats = stats;
-        mainPane.setOpacity(settings.getBrightness());
     }
 
     @FXML
@@ -103,6 +100,7 @@ public class MainController implements Initializable{
 
     @FXML
     void errorEvent(ActionEvent event) {
+        settings.getMusicBg().stopMediaPlayer();
         doTranslateTransition(flagPane, flagButton, 0, flagPane.getPrefWidth());
     }
 
@@ -145,6 +143,22 @@ public class MainController implements Initializable{
     @FXML
     void menuExitEvent(ActionEvent event) {
         menuEvent(event);
+    }
+
+    @FXML
+    void SettingsAction(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/SettingsView.fxml"));
+        Parent root = loader.load();
+
+        //Set Values
+        SettingsController ssCt = loader.getController();
+        ssCt.setValues(settings, stats);
+
+        //Show controller
+        Stage settingsView = (Stage) settingsButton.getScene().getWindow();
+        Scene scene = new Scene(root, 800, 600);
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
+        settingsView.setScene(scene);
     }
 
     @FXML

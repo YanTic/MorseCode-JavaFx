@@ -51,6 +51,10 @@ public class StatsController implements Initializable{
     public void initialize(URL arg0, ResourceBundle arg1) {
         Platform.runLater(()->{
             setLineChartValues();
+            
+            settings.getMusicBg().stopMediaPlayer();   
+            if(settings.getMusic())
+                settings.getMusicBg().setSongTrack(3);
         });         
     }
 
