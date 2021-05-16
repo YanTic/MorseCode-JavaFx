@@ -24,6 +24,10 @@
     -fx-background-color: transparent;
 }
 
+#prefWordBtt{
+    -fx-background-color: #E75A64;
+}
+
 #helpButton{
     -fx-graphic: url("../images/HelpButton.png");
     -fx-background-color: transparent;

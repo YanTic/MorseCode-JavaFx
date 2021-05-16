@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXSlider?>
 <?import com.jfoenix.controls.JFXToggleButton?>
+<?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -31,7 +32,7 @@
                   <JFXToggleButton fx:id="effectsToggBtt" layoutX="263.0" layoutY="99.0" onAction="#effectsEvent" styleClass="shadow" text=" " AnchorPane.rightAnchor="23.0" />
                   <JFXButton fx:id="exitBtt" buttonType="RAISED" layoutX="307.0" layoutY="3.0" onAction="#exitEvent" text=" " AnchorPane.rightAnchor="0.0">
                      <graphic>
-                        <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" styleClass="shadow">
+                        <ImageView fitHeight="33.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/close.png" />
                            </image>
@@ -43,6 +44,10 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
+                     <styleClass>
+                        <String fx:value="shadow" />
+                        <String fx:value="Buttons" />
+                     </styleClass>
                   </JFXButton>
                   <Label fx:id="assistanceLb" layoutX="24.0" layoutY="296.0" styleClass="shadow" text="Assistance">
                      <font>
@@ -61,7 +66,7 @@
                      </font>
                   </Label>
                   <JFXSlider fx:id="sliderBrightness" blockIncrement="0.0" layoutX="30.0" layoutY="87.0" majorTickUnit="0.1" max="1.0" min="0.25" minorTickCount="0" prefHeight="51.0" prefWidth="307.0" showTickLabels="true" value="0.1" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="23.0" />
-                  <JFXButton fx:id="saveButton" buttonType="RAISED" layoutX="256.0" layoutY="151.0" onAction="#saveEvent" prefHeight="32.0" prefWidth="84.0" text="Save" AnchorPane.rightAnchor="20.0">
+                  <JFXButton fx:id="saveButton" buttonType="RAISED" layoutX="256.0" layoutY="151.0" onAction="#saveEvent" prefHeight="32.0" prefWidth="84.0" styleClass="Buttons" text="Save" AnchorPane.rightAnchor="20.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></JFXButton>
