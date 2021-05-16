@@ -150,10 +150,24 @@ public class MorseController implements Initializable {
         MainController mainCt = loader.getController();
         mainCt.setValues(settings, stats);
 
-        Stage mainView = (Stage) returnButton.getScene().getWindow();
+        Scene scene = returnButton.getScene();
+        StackPane mainView = (StackPane) scene.getRoot();
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm()); 
+        root.translateXProperty().set(scene.getHeight());
+        mainView.getChildren().add(root);
+
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.seconds(1.3), 
+                new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN)
+            )
+        );
+        timeLine.play();
+
+        /* Stage mainView = (Stage) returnButton.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
-        mainView.setScene(scene);
+        mainView.setScene(scene); */
     }
 
     @FXML
