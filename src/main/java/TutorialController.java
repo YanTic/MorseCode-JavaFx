@@ -11,11 +11,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class TutorialController implements Initializable {
     @FXML private StackPane stackPane;
@@ -41,10 +46,25 @@ public class TutorialController implements Initializable {
         MainController mainCt = loader.getController();
         mainCt.setValues(settings, stats);
 
-        Stage mainView = (Stage) backBtt.getScene().getWindow();
+        Scene scene = backBtt.getScene();
+        StackPane mainView = (StackPane) scene.getRoot();
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm()); 
+        root.translateXProperty().set(scene.getHeight());
+        mainView.getChildren().add(root);
+
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.seconds(1.3), 
+                new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN)
+            )
+        );
+        timeLine.play();
+
+
+        /*Stage mainView = (Stage) backBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
-        mainView.setScene(scene);
+        mainView.setScene(scene);*/
     }
     
     public void setValues(Settings settings, Stats stats){

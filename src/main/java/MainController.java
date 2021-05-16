@@ -179,11 +179,25 @@ public class MainController implements Initializable{
 
         MorseController morCt = loader.getController();
         morCt.setValues(settings, stats);
+
+        Scene scene = playBtt.getScene();
+        StackPane morseView = (StackPane) scene.getRoot();
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
+        root.translateXProperty().set(-scene.getWidth());
+        morseView.getChildren().add(root);
+
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.seconds(1.3), 
+                new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN)
+            )
+        );
+        timeLine.play();
         
-        Stage morseView = (Stage) playBtt.getScene().getWindow();
+/*         Stage morseView = (Stage) playBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
-        morseView.setScene(scene);
+        morseView.setScene(scene); */
     }
 
     @FXML
@@ -197,7 +211,7 @@ public class MainController implements Initializable{
         Scene scene = statsBtt.getScene();
         StackPane statsView = (StackPane) scene.getRoot();
         scene.getStylesheets().add(getClass().getResource("/resources/styles/StatsView.css").toExternalForm());
-        root.translateXProperty().set(scene.getWidth());
+        root.translateXProperty().set(-scene.getWidth());
         statsView.getChildren().add(root);
 
         Timeline timeLine = new Timeline(
@@ -222,9 +236,24 @@ public class MainController implements Initializable{
         TutorialController tutoCt = loader.getController();
         tutoCt.setValues(settings, stats);
         
-        Stage tutorialView = (Stage) tutorialBtt.getScene().getWindow();
+        Scene scene = tutorialBtt.getScene();
+        StackPane tutorialView = (StackPane) scene.getRoot();
+//        scene.getStylesheets().add(getClass().getResource("/resources/styles/----------.css").toExternalForm());
+        root.translateXProperty().set(-scene.getWidth());
+        tutorialView.getChildren().add(root);
+
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.seconds(1.3), 
+                new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN)
+            )
+        );
+        timeLine.play();
+
+
+        /* Stage tutorialView = (Stage) tutorialBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
-        tutorialView.setScene(scene);
+        tutorialView.setScene(scene); */
     }
 
 }
