@@ -9,6 +9,10 @@ import java.util.ResourceBundle;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -58,13 +62,6 @@ public class MainController implements Initializable{
             if(settings.getMusic())
                 settings.getMusicBg().setSongTrack(0);
         }); 
-
-/*         Platform.runLater(()->{
-            if(settings.getMusic()){
-                PlaySound.stopSounds();
-                PlaySound.playSounds("src/resources/sounds/music/Track01.wav");
-            }
-        }); */
     }
 
     public void setValues(Settings settings, Stats stats){
@@ -155,10 +152,24 @@ public class MainController implements Initializable{
         ssCt.setValues(settings, stats);
 
         //Show controller
-        Stage settingsView = (Stage) settingsButton.getScene().getWindow();
+/*         Stage settingsView = (Stage) settingsButton.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
-        settingsView.setScene(scene);
+        settingsView.setScene(scene); */
+
+        Scene scene = statsBtt.getScene();
+        StackPane settingsView = (StackPane) scene.getRoot();
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
+        root.translateYProperty().set(scene.getHeight());
+        settingsView.getChildren().add(root);
+
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.seconds(1.3), 
+                new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN)
+            )
+        );
+        timeLine.play();
     }
 
     @FXML
@@ -183,10 +194,24 @@ public class MainController implements Initializable{
         StatsController staCt = loader.getController();
         staCt.setValues(settings, stats);
         
-        Stage statsView = (Stage) statsBtt.getScene().getWindow();
+        Scene scene = statsBtt.getScene();
+        StackPane statsView = (StackPane) scene.getRoot();
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/StatsView.css").toExternalForm());
+        root.translateXProperty().set(scene.getWidth());
+        statsView.getChildren().add(root);
+
+        Timeline timeLine = new Timeline(
+            new KeyFrame(
+                Duration.seconds(1.3), 
+                new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN)
+            )
+        );
+        timeLine.play();
+
+        /* Stage statsView = (Stage) statsBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
         scene.getStylesheets().add(getClass().getResource("/resources/styles/StatsView.css").toExternalForm());
-        statsView.setScene(scene);
+        statsView.setScene(scene); */
     }
 
     @FXML

@@ -25,6 +25,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -60,7 +61,8 @@ public class SettingsController implements Initializable{
         });
 
         saved = false;
-        show(SettingsPane.getPrefHeight(), 0);
+        Timeline timeline = show(SettingsPane.getPrefHeight(), 0);
+        timeline.play();
 
         Platform.runLater(()->{            
             settings.getMusicBg().stopMediaPlayer();        
@@ -77,21 +79,27 @@ public class SettingsController implements Initializable{
         MainController mainCt = loader.getController();
         mainCt.setValues(settings, stats);                 
 
-        Stage mainView = (Stage) exitBtt.getScene().getWindow();
+/*         Stage mainView = (Stage) exitBtt.getScene().getWindow();
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm()); */
 
-        Timeline timeLine = new Timeline(
+        Timeline timeLine1 = show(0, SettingsPane.getPrefHeight());
+//        timeLine2.setOnFinished(evnt->{mainView.setScene(scene);});
+        timeLine1.play();
+        
+        Scene scene = exitBtt.getScene();
+        StackPane mainView = (StackPane) scene.getRoot();
+        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm()); 
+        root.translateYProperty().set(scene.getHeight());
+        mainView.getChildren().add(root);
+
+        Timeline timeLine2 = new Timeline(
             new KeyFrame(
-                Duration.ZERO,
-                new KeyValue(SettingsPane.translateYProperty(), 0)
-            ),
-            new KeyFrame(
-                Duration.seconds(1.5), 
-                new KeyValue(SettingsPane.translateYProperty(), SettingsPane.getPrefHeight(), Interpolator.EASE_IN))
+                Duration.seconds(1.3), 
+                new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN)
+            )
         );
-        timeLine.setOnFinished(evnt->{mainView.setScene(scene);});
-        timeLine.play();
+        timeLine2.play();
     }
 
     @FXML
@@ -136,18 +144,20 @@ public class SettingsController implements Initializable{
         panelDown.setOpacity(settings.getBrightness());
     }
 
-    private void show(double fromY, double toY){
+    private Timeline show(double fromY, double toY){
         Timeline timeLine = new Timeline(
             new KeyFrame(
                 Duration.ZERO,
-                new KeyValue(SettingsPane.translateYProperty(), fromY)
+                new KeyValue(panelUp.translateYProperty(), fromY),
+                new KeyValue(panelDown.translateYProperty(), fromY)
             ),
             new KeyFrame(
-                Duration.seconds(1.3), 
-                new KeyValue(SettingsPane.translateYProperty(), toY, Interpolator.EASE_IN)
+                Duration.seconds(2.3), 
+                new KeyValue(panelUp.translateYProperty(), toY, Interpolator.EASE_IN),
+                new KeyValue(panelDown.translateYProperty(), toY, Interpolator.EASE_IN)
             )
         );
-        timeLine.play();
+        return timeLine;
     }
 
 }
