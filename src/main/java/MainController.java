@@ -28,7 +28,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainController implements Initializable{
@@ -151,24 +150,13 @@ public class MainController implements Initializable{
         SettingsController ssCt = loader.getController();
         ssCt.setValues(settings, stats);
 
-        //Show controller
-/*         Stage settingsView = (Stage) settingsButton.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
-        settingsView.setScene(scene); */
-
         Scene scene = statsBtt.getScene();
         StackPane settingsView = (StackPane) scene.getRoot();
         scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
         root.translateYProperty().set(scene.getHeight());
         settingsView.getChildren().add(root);
 
-        Timeline timeLine = new Timeline(
-            new KeyFrame(
-                Duration.seconds(1.3), 
-                new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN)
-            )
-        );
+        Timeline timeLine = transitionScene(root, 'Y');
         timeLine.play();
     }
 
@@ -186,18 +174,8 @@ public class MainController implements Initializable{
         root.translateXProperty().set(-scene.getWidth());
         morseView.getChildren().add(root);
 
-        Timeline timeLine = new Timeline(
-            new KeyFrame(
-                Duration.seconds(1.3), 
-                new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN)
-            )
-        );
+        Timeline timeLine = transitionScene(root, 'X');
         timeLine.play();
-        
-/*         Stage morseView = (Stage) playBtt.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
-        morseView.setScene(scene); */
     }
 
     @FXML
@@ -214,18 +192,8 @@ public class MainController implements Initializable{
         root.translateXProperty().set(-scene.getWidth());
         statsView.getChildren().add(root);
 
-        Timeline timeLine = new Timeline(
-            new KeyFrame(
-                Duration.seconds(1.3), 
-                new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN)
-            )
-        );
-        timeLine.play();
-
-        /* Stage statsView = (Stage) statsBtt.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/StatsView.css").toExternalForm());
-        statsView.setScene(scene); */
+        Timeline timeLine = transitionScene(root, 'X');
+        timeLine.play();        
     }
 
     @FXML
@@ -238,22 +206,35 @@ public class MainController implements Initializable{
         
         Scene scene = tutorialBtt.getScene();
         StackPane tutorialView = (StackPane) scene.getRoot();
-//        scene.getStylesheets().add(getClass().getResource("/resources/styles/----------.css").toExternalForm());
+//        scene.getStylesheets().add(getClass().getResource("/resources/styles/TutorialView.css").toExternalForm());
         root.translateXProperty().set(-scene.getWidth());
         tutorialView.getChildren().add(root);
 
-        Timeline timeLine = new Timeline(
-            new KeyFrame(
-                Duration.seconds(1.3), 
-                new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN)
-            )
-        );
+        Timeline timeLine = transitionScene(root, 'X');
         timeLine.play();
+    }
 
+    public Timeline transitionScene(Parent root, char translateProperty){
+        Timeline timeLine = null;
 
-        /* Stage tutorialView = (Stage) tutorialBtt.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        tutorialView.setScene(scene); */
+        if(translateProperty == 'X'){
+            timeLine = new Timeline(
+                new KeyFrame(
+                    Duration.seconds(1.3), 
+                    new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN)
+                )
+            );
+        }
+        else if(translateProperty == 'Y'){
+            timeLine = new Timeline(
+                new KeyFrame(
+                    Duration.seconds(1.3), 
+                    new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN)
+                )
+            );
+        }
+
+        return timeLine;
     }
 
 }

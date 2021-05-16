@@ -33,7 +33,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MorseController implements Initializable {
@@ -163,11 +162,6 @@ public class MorseController implements Initializable {
             )
         );
         timeLine.play();
-
-        /* Stage mainView = (Stage) returnButton.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
-        mainView.setScene(scene); */
     }
 
     @FXML
