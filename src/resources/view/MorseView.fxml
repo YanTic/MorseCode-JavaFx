@@ -76,7 +76,7 @@
                </children>
             </AnchorPane>
             <ProgressBar fx:id="line" layoutX="471.0" layoutY="105.0" prefHeight="6.0" prefWidth="300.0" progress="0" AnchorPane.leftAnchor="471.0" />
-            <JFXButton fx:id="prefWordBtt" alignment="CENTER" layoutX="458.0" layoutY="13.0" onAction="#prefWordEvent" text="I like this word man" textAlignment="CENTER" AnchorPane.leftAnchor="458.0" AnchorPane.rightAnchor="188.0">
+            <JFXButton fx:id="prefWordBtt" alignment="CENTER" layoutX="458.0" layoutY="9.0" onAction="#prefWordEvent" text="I like this word man" textAlignment="CENTER" AnchorPane.leftAnchor="458.0" AnchorPane.rightAnchor="188.0">
                <graphic>
                   <ImageView fitHeight="30.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>

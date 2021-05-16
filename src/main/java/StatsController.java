@@ -98,11 +98,6 @@ public class StatsController implements Initializable{
             )
         );
         timeLine.play();
-
-/*         Stage mainView = (Stage) backBtt.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
-        mainView.setScene(scene); */
     }
 
     public void setValues(Settings settings, Stats stats){

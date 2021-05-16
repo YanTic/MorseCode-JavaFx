@@ -19,7 +19,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class TutorialController implements Initializable {
@@ -59,12 +58,6 @@ public class TutorialController implements Initializable {
             )
         );
         timeLine.play();
-
-
-        /*Stage mainView = (Stage) backBtt.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
-        mainView.setScene(scene);*/
     }
     
     public void setValues(Settings settings, Stats stats){

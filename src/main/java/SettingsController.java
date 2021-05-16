@@ -78,12 +78,7 @@ public class SettingsController implements Initializable{
         MainController mainCt = loader.getController();
         mainCt.setValues(settings, stats);                 
 
-/*         Stage mainView = (Stage) exitBtt.getScene().getWindow();
-        Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm()); */
-
         Timeline timeLine1 = show(0, SettingsPane.getPrefHeight());
-//        timeLine2.setOnFinished(evnt->{mainView.setScene(scene);});
         timeLine1.play();
         
         Scene scene = exitBtt.getScene();
