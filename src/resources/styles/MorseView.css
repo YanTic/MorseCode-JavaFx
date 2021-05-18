@@ -11,6 +11,10 @@
     -fx-background-color:  #ffffff;
 }
 
+.buttonMorse:hover{
+    -fx-background-color:  #e9c2c2;
+}
+
 #stackPane{
     -fx-background-color: #1d1e1e;
 }

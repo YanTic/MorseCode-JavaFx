@@ -1,3 +1,28 @@
 .shadow{
     -fx-effect: dropShadow(three-pass-box, rgba(0,0,0,0.2), 10.0, 0.0, 0.0, 10.0);
 }
+
+.backgroundBrightness{
+    -fx-background-color:  #1d1e1e;
+}
+
+.buttonMorse{
+    -fx-background-radius: 5;
+    -fx-background-color:  #ffffff;
+}
+
+.buttonMorse:hover{
+    -fx-background-color:  #e9c2c2;
+}
+
+#generalPane{
+    -fx-background-color: #95c85f;
+}
+
+#backBtt{
+    -fx-background-color: #95c85f;
+}
+
+#repeatBtt{
+    -fx-background-color: #95c85f;
+}
