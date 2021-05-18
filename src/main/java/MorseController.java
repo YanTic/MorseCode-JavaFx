@@ -258,10 +258,28 @@ public class MorseController implements Initializable {
     
     @FXML
     void helpBttEvent(ActionEvent event) throws IOException {
-        if(helpScrollPane.isVisible())
-            helpScrollPane.setVisible(false);
-        else
+        if(helpScrollPane.isVisible()){            
+            helpScrollPane.translateYProperty().set(0);
+            Timeline timeLine = animationInY(helpScrollPane, morsePane.getHeight());
+            timeLine.setOnFinished(e->{helpScrollPane.setVisible(false);});
+            timeLine.play();
+        }
+        else{
+            helpScrollPane.translateYProperty().set(morsePane.getHeight());
             helpScrollPane.setVisible(true);
+            Timeline timeLine = animationInY(helpScrollPane, 0);            
+            timeLine.play(); 
+        }
+    }
+
+    public Timeline animationInY(Node node, double to){
+        Timeline timeLine = new Timeline(
+                new KeyFrame(
+                    Duration.seconds(1.3), 
+                    new KeyValue(node.translateYProperty(), to, Interpolator.EASE_IN)
+                )
+            );
+        return timeLine;
     }
 
     @FXML   //This is from AnchorPane (morsePanel I call it);
