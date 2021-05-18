@@ -56,19 +56,6 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></JFXButton>
-            <ScrollPane fx:id="helpScrollPane" hbarPolicy="NEVER" layoutX="204.0" layoutY="65.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pannable="true" prefHeight="490.0" prefWidth="400.0" visible="false">
-               <content>
-                  <AnchorPane prefHeight="490.0" prefWidth="400.0">
-                     <children>
-                        <ImageView fitHeight="2250.0" fitWidth="942.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/MorseHelp.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
             <AnchorPane fx:id="tipPane" layoutY="20.0" prefHeight="165.0" prefWidth="235.0" visible="false" AnchorPane.leftAnchor="0.0">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="165.0" stroke="TRANSPARENT" strokeType="INSIDE" width="235.0" />
@@ -89,5 +76,18 @@
                </cursor></JFXButton>
          </children>
       </AnchorPane>
+      <ScrollPane fx:id="helpScrollPane" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pannable="true" prefHeight="490.0" prefWidth="400.0" visible="false">
+         <content>
+            <AnchorPane prefHeight="490.0" prefWidth="400.0">
+               <children>
+                  <ImageView fitHeight="2250.0" fitWidth="942.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/MorseHelp.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
    </children>
 </StackPane>
