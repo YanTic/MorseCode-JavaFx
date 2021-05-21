@@ -54,7 +54,10 @@
     -fx-font-size: 65px; 
 }
 
-#line{
-    -fx-background-color: red;
-    -fx-accent: #e75a64;
+#line > .bar{
+    -fx-accent:  #e22e2e;
+}
+
+#line > .track{
+    -fx-background-color:#e75a64;
 }

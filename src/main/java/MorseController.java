@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import com.gluonhq.charm.glisten.control.ProgressBar;
 import com.jfoenix.controls.JFXButton;
 
 import javafx.animation.FadeTransition;
@@ -25,6 +24,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
