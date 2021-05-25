@@ -60,7 +60,7 @@ public class PlaySound {
 
     public void setBackgroundMusic(){
         songs = new ArrayList<File>();
-		directory = new File("src/resources/sounds/music");
+		directory = new File("src/main/resources/sounds/music");
 		files = directory.listFiles();
 		
 		if(files != null) {

@@ -66,7 +66,7 @@ public class MorseController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         morseText.setFocusTraversable(false); //When i started the program the handle of the buttons doesn't work
         morseText.setFont(new Font("Open Sans Extranegrita", 180)); //DON'T PIXEL MY DOTS/DASHES
-        PlaySound.playSounds("src/resources/sounds/dot.wav");
+        PlaySound.playSounds("src/main/resources/sounds/dot.wav");
 
         Platform.runLater(()->{
             settings.getMusicBg().stopMediaPlayer();        
@@ -99,7 +99,7 @@ public class MorseController implements Initializable {
 
         PlaySound.stopSounds();
         if(settings.getMusicEffects()){
-            PlaySound.playSounds("src/resources/sounds/dot.wav");
+            PlaySound.playSounds("src/main/resources/sounds/dot.wav");
         }
 
         //When the user don't type anything, the program shows a tip.
@@ -126,7 +126,7 @@ public class MorseController implements Initializable {
         
         PlaySound.stopSounds();
         if(settings.getMusicEffects()){
-            PlaySound.playSounds("src/resources/sounds/dash.wav");
+            PlaySound.playSounds("src/main/resources/sounds/dash.wav");
         }
 
         tip.stopTimer();
@@ -141,7 +141,7 @@ public class MorseController implements Initializable {
     @FXML
     void returnBttEvent(ActionEvent event) throws IOException {
         // This change the scene, return to the main scene
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlViews/MainView.fxml"));
         Parent root = loader.load();
 
         //Well, you can think that, this is not necessary, but when i press the return
@@ -151,7 +151,7 @@ public class MorseController implements Initializable {
 
         Scene scene = returnButton.getScene();
         StackPane mainView = (StackPane) scene.getRoot();
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm()); 
+        scene.getStylesheets().add(getClass().getResource("/styles/Main.css").toExternalForm()); 
         root.translateXProperty().set(scene.getHeight());
         mainView.getChildren().add(root);
 
@@ -358,8 +358,8 @@ public class MorseController implements Initializable {
                     tipPane.setVisible(false);
                 });
             }
-            else{   
-                Image image = new Image("resources/images/Tips/"+letter+".jpg");
+            else{                   
+                Image image = new Image("/images/Tips/"+letter.toUpperCase()+".jpg");
                 tipImage.setImage(image);         
                 transition.setFromX(-tipPane.getPrefWidth());
                 transition.setToX(0);

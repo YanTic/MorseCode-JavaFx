@@ -49,7 +49,7 @@ public class TutorialController implements Initializable {
                 settings.getMusicBg().setSongTrack(4);
         });
 
-        file = new File("src/resources/images/tutorial.mp4");
+        file = new File("src/main/resources/images/tutorial.mp4");
         media = new Media(file.toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         videoTutorial.setMediaPlayer(mediaPlayer);
@@ -58,7 +58,7 @@ public class TutorialController implements Initializable {
 
     @FXML
     void backEvent(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlViews/MainView.fxml"));
         Parent root = loader.load();
 
         MainController mainCt = loader.getController();
@@ -66,7 +66,7 @@ public class TutorialController implements Initializable {
 
         Scene scene = backBtt.getScene();
         StackPane mainView = (StackPane) scene.getRoot();
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm()); 
+        scene.getStylesheets().add(getClass().getResource("/styles/Main.css").toExternalForm()); 
         root.translateXProperty().set(scene.getHeight());
         mainView.getChildren().add(root);
 
@@ -89,14 +89,14 @@ public class TutorialController implements Initializable {
     void dotEvent(ActionEvent event) {
         PlaySound.stopSounds();
         if(settings.getMusicEffects())
-            PlaySound.playSounds("src/resources/sounds/dot.wav");
+            PlaySound.playSounds("src/main/resources/sounds/dot.wav");
     }
 
     @FXML
     void dashEvent(ActionEvent event) {
         PlaySound.stopSounds();
         if(settings.getMusicEffects())
-            PlaySound.playSounds("src/resources/sounds/dash.wav");
+            PlaySound.playSounds("src/main/resources/sounds/dash.wav");
     }
 
     @FXML

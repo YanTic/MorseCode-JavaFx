@@ -72,7 +72,7 @@ public class SettingsController implements Initializable{
 
     @FXML
     void exitEvent(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlViews/MainView.fxml"));
         Parent root = loader.load();   
 
         MainController mainCt = loader.getController();
@@ -83,7 +83,7 @@ public class SettingsController implements Initializable{
         
         Scene scene = exitBtt.getScene();
         StackPane mainView = (StackPane) scene.getRoot();
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm()); 
+        scene.getStylesheets().add(getClass().getResource("/styles/Main.css").toExternalForm()); 
         root.translateYProperty().set(scene.getHeight());
         mainView.getChildren().add(root);
 

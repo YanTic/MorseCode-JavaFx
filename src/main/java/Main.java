@@ -13,9 +13,9 @@ public class Main extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/resources/view/MainView.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxmlViews/MainView.fxml"));
         Scene scene = new Scene(root, 800, 600);
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/Main.css").toExternalForm());
         primaryStage.setTitle("Morse Desktop");
         primaryStage.setScene(scene);
         primaryStage.setResizable(false);

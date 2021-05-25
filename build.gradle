@@ -1,0 +1,21 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.10'
+}
+
+version = '1.0'
+mainClassName = "main.java.Main"
+
+dependencies {
+    implementation group: 'com.jfoenix', name: 'jfoenix', version: '9.0.10'
+}
+
+javafx {
+    version = "16"
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.media', 'javafx.graphics']
+}
+
+repositories {
+    mavenCentral()
+}

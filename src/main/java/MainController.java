@@ -76,7 +76,7 @@ public class MainController implements Initializable{
 
     @FXML
     void dontPushBttEvent(ActionEvent e){
-        PlaySound.playSounds("src/resources/sounds/DontPush.wav");
+        PlaySound.playSounds("src/main/resources/sounds/DontPush.wav");
     }
 
     @FXML
@@ -143,7 +143,7 @@ public class MainController implements Initializable{
 
     @FXML
     void SettingsAction(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/SettingsView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlViews/SettingsView.fxml"));
         Parent root = loader.load();
 
         //Set Values
@@ -152,7 +152,7 @@ public class MainController implements Initializable{
 
         Scene scene = statsBtt.getScene();
         StackPane settingsView = (StackPane) scene.getRoot();
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/SettingsView.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/SettingsView.css").toExternalForm());
         root.translateYProperty().set(scene.getHeight());
         settingsView.getChildren().add(root);
 
@@ -162,7 +162,7 @@ public class MainController implements Initializable{
 
     @FXML
     void playEvent(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MorseView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlViews/MorseView.fxml"));
         Parent root = loader.load();
 
         MorseController morCt = loader.getController();
@@ -170,7 +170,7 @@ public class MainController implements Initializable{
 
         Scene scene = playBtt.getScene();
         StackPane morseView = (StackPane) scene.getRoot();
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/MorseView.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/MorseView.css").toExternalForm());
         root.translateXProperty().set(-scene.getWidth());
         morseView.getChildren().add(root);
 
@@ -180,7 +180,7 @@ public class MainController implements Initializable{
 
     @FXML
     void statsEvent(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/StatsView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlViews/StatsView.fxml"));
         Parent root = loader.load();
 
         StatsController staCt = loader.getController();
@@ -188,7 +188,7 @@ public class MainController implements Initializable{
         
         Scene scene = statsBtt.getScene();
         StackPane statsView = (StackPane) scene.getRoot();
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/StatsView.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("/styles/StatsView.css").toExternalForm());
         root.translateXProperty().set(-scene.getWidth());
         statsView.getChildren().add(root);
 
@@ -198,7 +198,7 @@ public class MainController implements Initializable{
 
     @FXML
     void tutorialEvent(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/TutorialView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlViews/TutorialView.fxml"));
         Parent root = loader.load();
 
         TutorialController tutoCt = loader.getController();

@@ -79,7 +79,7 @@ public class StatsController implements Initializable{
 
     @FXML
     void backEvent(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/resources/view/MainView.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxmlViews/MainView.fxml"));
         Parent root = loader.load();
 
         MainController mainCt = loader.getController();
@@ -87,7 +87,7 @@ public class StatsController implements Initializable{
 
         Scene scene = backBtt.getScene();
         StackPane mainView = (StackPane) scene.getRoot();
-        scene.getStylesheets().add(getClass().getResource("/resources/styles/Main.css").toExternalForm()); 
+        scene.getStylesheets().add(getClass().getResource("/styles/Main.css").toExternalForm()); 
         root.translateXProperty().set(scene.getHeight());
         mainView.getChildren().add(root);
 
