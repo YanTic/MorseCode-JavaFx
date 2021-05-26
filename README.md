@@ -36,6 +36,7 @@ Open a terminal in the root directory and run the following commands:
 The morse language uses dots and dashes for comunication. If you're new in the morse world, you can use the guide (or tutorial) inside the program.
 
 Every letter has a translation to Morse.
+
 ![](https://i.imgur.com/7yRvhRm.png)
 
 You just have to type the dots and dashes of every letter until building the complete word
