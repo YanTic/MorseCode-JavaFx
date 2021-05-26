@@ -7,6 +7,7 @@ Morse Code is a desktop app coded in java with a simple purpose: Practice ✨Mor
 MorseCode requires [JavaFx](https://gluonhq.com/products/javafx/) (Version 11+) and [Jfoenix](https://github.com/sshahine/JFoenix) (Version 8+).
 
 ![](https://i.imgur.com/6b48FvS.png)
+
 You can use the simple branch __main__ if you wanna run the project with the IDE, using the `Main.java` class. But if you wanna use gradle, use git clone on the branch __gradle__:
 
 ```
